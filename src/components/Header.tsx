@@ -1,16 +1,22 @@
 import styled from "styled-components";
-import { colors } from "../assets/styles/theme";
 import { rem } from "polished";
 
 const Header = () => {
-  return <HeaderBox>Header</HeaderBox>;
+  return (
+    <HeaderContainer>
+      <Logo src="/images/logo.svg" alt="Логотип" aria-label="Логотип" />
+    </HeaderContainer>
+  );
 };
 
-const HeaderBox = styled.div`
-  width: 100%;
-  height: ${rem(60)};
-  color: white;
-  background-color: ${colors.black};
+const HeaderContainer = styled.header`
+  margin-bottom: ${rem(20)};
+`;
+
+const Logo = styled.img`
+  display: block;
+  margin: 0 auto;
+  width: ${rem(153)};
 `;
 
 export default Header;
