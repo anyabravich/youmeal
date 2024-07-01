@@ -3,13 +3,16 @@ import { rem } from "polished";
 import Container from "./Container";
 import Basket from "./Basket";
 import Cards from "./Cards";
+import { useLabel } from "./LabelContext";
 
 const Main = () => {
+  const { selectedLabel } = useLabel();
+
   return (
     <MainContainer>
       <MainInner>
         <Basket />
-        <Cards />
+        <Cards selectedLabel={selectedLabel} />
       </MainInner>
     </MainContainer>
   );

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Card from "./Card";
 import { rem } from "polished";
-import { ICard } from "../types";
+import { ICard, ICards } from "../types";
+import { useState } from "react";
 
 const CardsData = [
   {
@@ -10,6 +11,7 @@ const CardsData = [
     price: 689,
     title: "Мясная бомба",
     weight: 520,
+    category: "Бургеры",
   },
   {
     id: 2,
@@ -17,6 +19,7 @@ const CardsData = [
     price: 550,
     title: "Супер сырный",
     weight: 512,
+    category: "Бургеры",
   },
   {
     id: 3,
@@ -24,6 +27,7 @@ const CardsData = [
     price: 639,
     title: "Сытный",
     weight: 580,
+    category: "Бургеры",
   },
   {
     id: 4,
@@ -31,6 +35,7 @@ const CardsData = [
     price: 480,
     title: "Тяжелый удар",
     weight: 470,
+    category: "Бургеры",
   },
   {
     id: 5,
@@ -38,6 +43,7 @@ const CardsData = [
     price: 450,
     title: "Вечная классика",
     weight: 450,
+    category: "Бургеры",
   },
   {
     id: 6,
@@ -45,27 +51,37 @@ const CardsData = [
     price: 560,
     title: "Итальянский",
     weight: 510,
+    category: "Закуски",
   },
 ];
 
-const Cards = () => {
+const Cards = ({ selectedLabel }: ICards) => {
+  const filteredCards = CardsData.filter(({ category }) =>
+    selectedLabel ? category === selectedLabel : true
+  );
+
   return (
     <CardsContainer>
-      <CardsTitle className="h2">Бургеры</CardsTitle>
-      <CardsItems>
-        {CardsData.map(({ id, image, price, title, weight }: ICard) => (
-          <CardsItem>
-            <Card
-              id={id}
-              key={id}
-              image={image}
-              price={price}
-              title={title}
-              weight={weight}
-            />
-          </CardsItem>
-        ))}
-      </CardsItems>
+      <CardsTitle className="h2">{selectedLabel || "Все"}</CardsTitle>
+      <>
+        {filteredCards.length === 0 ? (
+          <p>Ничего не найдено</p>
+        ) : (
+          <CardsItems>
+            {filteredCards.map(({ id, image, price, title, weight }: ICard) => (
+              <CardsItem key={id}>
+                <Card
+                  id={id}
+                  image={image}
+                  price={price}
+                  title={title}
+                  weight={weight}
+                />
+              </CardsItem>
+            ))}
+          </CardsItems>
+        )}
+      </>
     </CardsContainer>
   );
 };
