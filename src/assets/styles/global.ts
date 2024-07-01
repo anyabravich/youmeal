@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { rem } from "polished";
-import { colors } from "./theme";
+import { breakpoints, colors } from "./theme";
+import { pxToVw } from "./utils";
 
 export const GlobalStyle = createGlobalStyle`
  @font-face {
@@ -28,6 +29,15 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+  }
+  html {
+    font-size: 16px;
+    @media (max-width: ${breakpoints.desktop}px) {
+		  font-size: ${pxToVw(16)};
+	  }
+    @media (min-width: ${breakpoints.desktop + 1}px) {
+      font-size: ${`clamp(16px, ${pxToVw(16, 1440)}, 22px)`};
+    }
   }
   body {
     font-family: "Nunito", sans-serif;

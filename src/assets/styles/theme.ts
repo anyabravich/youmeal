@@ -7,3 +7,10 @@ export const colors = {
   lightGray: "#F9F9F9",
   Gray: "#F2F2F3",
 };
+
+export const breakpoints = {
+  mobile: 320,
+  tablet: 768,
+  laptop: 1024,
+  desktop: 1440,
+};
