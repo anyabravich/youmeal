@@ -2,7 +2,7 @@ import Container from "./Container";
 import styled from "styled-components";
 import { rem } from "polished";
 import Header from "./Header";
-import { colors } from "../assets/styles/theme";
+import { colors } from "../styles/theme";
 
 const Hero = () => {
   return (
@@ -15,14 +15,14 @@ const Hero = () => {
             alt="Бургер"
             aria-label="Бургер"
           />
-          <div>
+          <HeroTexts>
             <HeroTitle className="h1">
               Только самые <span>сочные бургеры!</span>
             </HeroTitle>
             <HeroText className="text">
               Бесплатная доставка от <span>599₽</span>
             </HeroText>
-          </div>
+          </HeroTexts>
         </HeroInner>
       </Container>
     </HeroContainer>
@@ -46,6 +46,10 @@ const HeroInner = styled.div`
 `;
 
 const HeroImage = styled.img``;
+
+const HeroTexts = styled.div`
+  margin-top: ${rem(40)};
+`;
 
 const HeroTitle = styled.h1`
   position: relative;

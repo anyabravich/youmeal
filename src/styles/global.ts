@@ -48,10 +48,21 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 800;
     line-height: 1.2;
   }
+  .h2 {
+    font-size: ${rem(40)};
+    font-weight: 600;
+    line-height: 1.2;
+  }
   .text {
     font-size: ${rem(16)};
     font-weight: 400;
     line-height: normal;
+  }
+  .text-big {
+    font-size: ${rem(24)};
+    font-weight: 600;
+    line-height: 1;
+
   }
   button {
     cursor: pointer;

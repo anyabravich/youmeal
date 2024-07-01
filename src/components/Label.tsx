@@ -1,7 +1,7 @@
 // Label.js
 import styled from "styled-components";
 import { rem } from "polished";
-import { colors } from "../assets/styles/theme";
+import { colors } from "../styles/theme";
 
 interface ILabel {
   icon: string;

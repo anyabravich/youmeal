@@ -70,7 +70,9 @@ const Labels = () => {
   );
 };
 
-const LabelsContainer = styled.section``;
+const LabelsContainer = styled.section`
+  margin-bottom: ${rem(50)};
+`;
 
 const LabelsList = styled.ul`
   display: flex;
