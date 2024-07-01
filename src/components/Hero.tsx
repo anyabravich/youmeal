@@ -35,6 +35,7 @@ const HeroContainer = styled.section`
   min-height: ${rem(466)};
   background: url("/images/hero-bg.svg") no-repeat center 100%;
   background-size: cover;
+  margin-bottom: ${rem(40)};
 `;
 
 const HeroInner = styled.div`

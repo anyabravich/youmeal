@@ -1,10 +1,11 @@
-import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Labels from "./components/Labels";
 
 function App() {
   return (
     <>
       <Hero />
+      <Labels />
     </>
   );
 }

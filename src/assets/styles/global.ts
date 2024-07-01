@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { rem } from "polished";
+import { colors } from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
  @font-face {
@@ -25,11 +26,12 @@ export const GlobalStyle = createGlobalStyle`
   }
   *, *::before, *::after {
     box-sizing: border-box;
-  }
-  body {
     margin: 0;
     padding: 0;
+  }
+  body {
     font-family: "Nunito", sans-serif;
+    background: ${colors.lightGray};
   }
   .h1 {
     font-size: ${rem(50)};
@@ -40,6 +42,16 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${rem(16)};
     font-weight: 400;
     line-height: normal;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-family: "Nunito", sans-serif;
+  }
+  ul, ol {
+    list-style: none;
   }
 `;
 
