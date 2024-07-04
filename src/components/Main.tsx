@@ -22,6 +22,7 @@ const MainContainer = styled.main``;
 
 const MainInner = styled(Container)`
   display: grid;
+  align-items: flex-start;
   gap: ${rem(30)};
   grid-template-columns: ${rem(300)} 1fr;
 `;

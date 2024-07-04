@@ -25,10 +25,18 @@ const ButtonContainer = styled.button`
   border-radius: ${rem(12)};
   background: ${colors.gray};
   transition: all 0.3s ease-in-out;
+  color: ${colors.black};
   &:hover {
     background: ${colors.lightOrange};
     color: ${colors.white};
     transition: all 0.3s ease-in-out;
+  }
+  &._orange {
+    background: ${colors.orange};
+    color: ${colors.white};
+    &:hover {
+      background: ${colors.darkOrange};
+    }
   }
 `;
 

@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Card from "./Card";
 import { rem } from "polished";
 import { ICard, ICards } from "../types";
-import { useState } from "react";
 
 const CardsData = [
   {

@@ -53,6 +53,11 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     line-height: 1.2;
   }
+  .h3 {
+    font-size: ${rem(24)};
+    font-weight: 600;
+    line-height: 1;
+  }
   .text {
     font-size: ${rem(16)};
     font-weight: 400;
