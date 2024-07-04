@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  ReactNode,
-  FC,
-} from "react";
+import { createContext, useState, useContext, ReactNode, FC } from "react";
 
 interface LabelContextType {
   selectedLabel: string | null;
