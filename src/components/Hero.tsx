@@ -45,7 +45,11 @@ const HeroInner = styled.div`
   grid-template-columns: ${rem(326)} minmax(auto, ${rem(437)});
 `;
 
-const HeroImage = styled.img``;
+const HeroImage = styled.img`
+  --size: ${rem(326)};
+  width: var(--size);
+  height: var(--size);
+`;
 
 const HeroTexts = styled.div`
   margin-top: ${rem(40)};

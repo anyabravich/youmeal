@@ -18,7 +18,11 @@ const Basket = () => {
         <BasketTotalTitle>Итого</BasketTotalTitle>
         <BasketTotalPrice>1279₽</BasketTotalPrice>
       </BasketTotal>
-      <Button className="_orange">Оформить заказ</Button>
+      <BasketButton className="_orange">Оформить заказ</BasketButton>
+      <BasketDelivery>
+        <BasketDeliveryImage src="/images/delivery.svg" alt="Доставка" />
+        <span>Бесплатная доставка</span>
+      </BasketDelivery>
     </BasketContainer>
   );
 };
@@ -57,5 +61,23 @@ const BasketTotal = styled.div`
 const BasketTotalTitle = styled.p``;
 
 const BasketTotalPrice = styled.p``;
+
+const BasketButton = styled(Button)`
+  margin-bottom: ${rem(8)};
+`;
+
+const BasketDelivery = styled.p`
+  display: flex;
+  align-items: center;
+  gap: ${rem(8)};
+  font-size: ${rem(12)};
+  line-height: normal;
+`;
+
+const BasketDeliveryImage = styled.img`
+  --size: ${rem(24)};
+  width: var(--size);
+  height: var(--size);
+`;
 
 export default Basket;
