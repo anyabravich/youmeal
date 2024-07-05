@@ -1,30 +1,33 @@
 import styled from "styled-components";
 import { rem } from "polished";
 import { colors } from "../styles/theme";
-import { useState } from "react";
 
-const Quantity = () => {
-  const [quantity, setQuantity] = useState(1);
+interface QuantityProps {
+  count?: number;
+  setCount: (count: number) => void;
+}
 
+const Quantity: React.FC<QuantityProps> = ({ count = 1, setCount }) => {
   const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+    if (count > 1) {
+      setCount(count - 1);
     }
   };
 
   const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+    setCount(count + 1);
   };
+
   return (
     <QuantityContainer>
       <QuantityButton
-        disabled={quantity === 1}
+        disabled={count === 1}
         type="button"
         onClick={decrementQuantity}
       >
         -
       </QuantityButton>
-      <QuantityValue>{quantity}</QuantityValue>
+      <QuantityValue>{count}</QuantityValue>
       <QuantityButton type="button" onClick={incrementQuantity}>
         +
       </QuantityButton>

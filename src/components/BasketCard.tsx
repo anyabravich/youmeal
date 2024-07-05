@@ -5,7 +5,26 @@ import { colors } from "../styles/theme";
 import { ICard } from "../types";
 import { formatWeight } from "../utils/formatWeight";
 
-const BasketCard = ({ title, weight, price, image }: ICard) => {
+interface BasketCardProps extends ICard {
+  count: number;
+  setCount: (id: number, count: number) => void;
+}
+
+const BasketCard: React.FC<BasketCardProps> = ({
+  title,
+  weight,
+  price,
+  image,
+  count,
+  id,
+  setCount,
+}: ICard) => {
+  const handleSetCount = (newCount: number) => {
+    if (setCount) {
+      setCount(id, newCount);
+    }
+  };
+
   return (
     <BasketCardContainer>
       <BasketCardImageContainer>
@@ -19,7 +38,7 @@ const BasketCard = ({ title, weight, price, image }: ICard) => {
         <BasketCardWeight>{formatWeight(weight)}</BasketCardWeight>
         <BasketCardPrice className="price">{price}₽</BasketCardPrice>
       </BasketCardContent>
-      <Quantity />
+      <Quantity count={count} setCount={handleSetCount} />
     </BasketCardContainer>
   );
 };

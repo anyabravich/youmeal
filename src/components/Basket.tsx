@@ -4,8 +4,23 @@ import { colors } from "../styles/theme";
 import BasketCard from "./BasketCard";
 import Button from "./Button";
 import { ICards } from "../types";
+import { useState } from "react";
 
 const Basket = ({ cards }: ICards) => {
+  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+
+  const setCount = (id: number, count: number) => {
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: count,
+    }));
+  };
+
+  const totalPrice = cards.reduce((total, card) => {
+    const count = quantities[card.id] || 1;
+    return total + card.price * count;
+  }, 0);
+
   return (
     <BasketContainer>
       <BasketTitle className="h3">
@@ -22,12 +37,14 @@ const Basket = ({ cards }: ICards) => {
                 image={card.image}
                 price={card.price}
                 id={card.id}
+                count={quantities[card.id] || 1}
+                setCount={setCount}
               />
             </div>
           ))}
           <BasketTotal>
             <BasketTotalTitle>Итого</BasketTotalTitle>
-            <BasketTotalPrice>1279₽</BasketTotalPrice>
+            <BasketTotalPrice>{totalPrice}₽</BasketTotalPrice>
           </BasketTotal>
           <BasketButton className="_orange">Оформить заказ</BasketButton>
           <BasketDelivery>
