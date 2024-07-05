@@ -4,6 +4,61 @@ import Container from "./Container";
 import Basket from "./Basket";
 import Cards from "./Cards";
 import { useLabel } from "./LabelContext";
+import { ICard } from "../types";
+
+const data = [
+  {
+    id: 1,
+    image: "card-1",
+    price: 689,
+    title: "Мясная бомба",
+    weight: 520,
+    category: "Бургеры",
+  },
+  {
+    id: 2,
+    image: "card-2",
+    price: 550,
+    title: "Супер сырный",
+    weight: 512,
+    category: "Бургеры",
+  },
+  {
+    id: 3,
+    image: "card-3",
+    price: 639,
+    title: "Сытный",
+    weight: 580,
+    category: "Бургеры",
+  },
+  {
+    id: 4,
+    image: "card-4",
+    price: 480,
+    title: "Тяжелый удар",
+    weight: 470,
+    category: "Бургеры",
+  },
+  {
+    id: 5,
+    image: "card-5",
+    price: 450,
+    title: "Вечная классика",
+    weight: 450,
+    category: "Бургеры",
+  },
+  {
+    id: 6,
+    image: "card-6",
+    price: 560,
+    title: "Итальянский",
+    weight: 510,
+    category: "Закуски",
+  },
+];
+
+// const basketData: ICard[] = [];
+const basketData: ICard[] = [...data].slice(0, 2);
 
 const Main = () => {
   const { selectedLabel } = useLabel();
@@ -11,8 +66,8 @@ const Main = () => {
   return (
     <MainContainer>
       <MainInner>
-        <Basket />
-        <Cards selectedLabel={selectedLabel} />
+        <Basket cards={basketData} />
+        <Cards cards={data} selectedLabel={selectedLabel} />
       </MainInner>
     </MainContainer>
   );

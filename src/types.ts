@@ -4,8 +4,10 @@ export interface ICard {
   price: number;
   title: string;
   weight: number;
+  category?: string;
 }
 
 export interface ICards {
-  selectedLabel: string | null;
+  selectedLabel?: string | null;
+  cards: ICard[] | [];
 }

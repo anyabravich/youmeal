@@ -2,20 +2,22 @@ import styled from "styled-components";
 import { rem } from "polished";
 import Quantity from "./Quantity";
 import { colors } from "../styles/theme";
+import { ICard } from "../types";
+import { formatWeight } from "../utils/formatWeight";
 
-const BasketCard = () => {
+const BasketCard = ({ title, weight, price, image }: ICard) => {
   return (
     <BasketCardContainer>
       <BasketCardImageContainer>
         <BasketCardImage
-          src="/images/basket/basket-card-1.jpg"
-          alt="Карточка корзины"
+          src={`/images/cards/${image}.jpg`}
+          alt="Картинка товара"
         />
       </BasketCardImageContainer>
       <BasketCardContent>
-        <BasketCardTitle>Супер сырный</BasketCardTitle>
-        <BasketCardWeight>520г.</BasketCardWeight>
-        <BasketCardPrice className="price">550₽</BasketCardPrice>
+        <BasketCardTitle>{title}</BasketCardTitle>
+        <BasketCardWeight>{formatWeight(weight)}</BasketCardWeight>
+        <BasketCardPrice className="price">{price}₽</BasketCardPrice>
       </BasketCardContent>
       <Quantity />
     </BasketCardContainer>

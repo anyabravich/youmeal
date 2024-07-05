@@ -3,26 +3,41 @@ import { rem } from "polished";
 import { colors } from "../styles/theme";
 import BasketCard from "./BasketCard";
 import Button from "./Button";
+import { ICards } from "../types";
 
-const Basket = () => {
+const Basket = ({ cards }: ICards) => {
   return (
     <BasketContainer>
       <BasketTitle className="h3">
         <span>Корзина</span>
-        <BasketCount>4</BasketCount>
+        <BasketCount>{cards.length}</BasketCount>
       </BasketTitle>
-      <BasketCard />
-      <BasketCard />
-      <BasketCard />
-      <BasketTotal>
-        <BasketTotalTitle>Итого</BasketTotalTitle>
-        <BasketTotalPrice>1279₽</BasketTotalPrice>
-      </BasketTotal>
-      <BasketButton className="_orange">Оформить заказ</BasketButton>
-      <BasketDelivery>
-        <BasketDeliveryImage src="/images/delivery.svg" alt="Доставка" />
-        <span>Бесплатная доставка</span>
-      </BasketDelivery>
+      {cards.length > 0 ? (
+        <>
+          {cards.map((card) => (
+            <div key={card.id}>
+              <BasketCard
+                title={card.title}
+                weight={card.weight}
+                image={card.image}
+                price={card.price}
+                id={card.id}
+              />
+            </div>
+          ))}
+          <BasketTotal>
+            <BasketTotalTitle>Итого</BasketTotalTitle>
+            <BasketTotalPrice>1279₽</BasketTotalPrice>
+          </BasketTotal>
+          <BasketButton className="_orange">Оформить заказ</BasketButton>
+          <BasketDelivery>
+            <BasketDeliveryImage src="/images/delivery.svg" alt="Доставка" />
+            <span>Бесплатная доставка</span>
+          </BasketDelivery>
+        </>
+      ) : (
+        <p>Тут пока пусто :(</p>
+      )}
     </BasketContainer>
   );
 };

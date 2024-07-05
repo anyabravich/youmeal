@@ -3,59 +3,8 @@ import Card from "./Card";
 import { rem } from "polished";
 import { ICard, ICards } from "../types";
 
-const CardsData = [
-  {
-    id: 1,
-    image: "card-1",
-    price: 689,
-    title: "Мясная бомба",
-    weight: 520,
-    category: "Бургеры",
-  },
-  {
-    id: 2,
-    image: "card-2",
-    price: 550,
-    title: "Супер сырный",
-    weight: 512,
-    category: "Бургеры",
-  },
-  {
-    id: 3,
-    image: "card-3",
-    price: 639,
-    title: "Сытный",
-    weight: 580,
-    category: "Бургеры",
-  },
-  {
-    id: 4,
-    image: "card-4",
-    price: 480,
-    title: "Тяжелый удар",
-    weight: 470,
-    category: "Бургеры",
-  },
-  {
-    id: 5,
-    image: "card-5",
-    price: 450,
-    title: "Вечная классика",
-    weight: 450,
-    category: "Бургеры",
-  },
-  {
-    id: 6,
-    image: "card-6",
-    price: 560,
-    title: "Итальянский",
-    weight: 510,
-    category: "Закуски",
-  },
-];
-
-const Cards = ({ selectedLabel }: ICards) => {
-  const filteredCards = CardsData.filter(({ category }) =>
+const Cards = ({ selectedLabel, cards }: ICards) => {
+  const filteredCards = cards.filter(({ category }) =>
     selectedLabel ? category === selectedLabel : true
   );
 
