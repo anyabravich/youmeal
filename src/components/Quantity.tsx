@@ -1,13 +1,33 @@
 import styled from "styled-components";
 import { rem } from "polished";
 import { colors } from "../styles/theme";
+import { useState } from "react";
 
 const Quantity = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
   return (
     <QuantityContainer>
-      <QuantityButton type="button">-</QuantityButton>
-      <QuantityValue>1</QuantityValue>
-      <QuantityButton type="button">+</QuantityButton>
+      <QuantityButton
+        disabled={quantity === 1}
+        type="button"
+        onClick={decrementQuantity}
+      >
+        -
+      </QuantityButton>
+      <QuantityValue>{quantity}</QuantityValue>
+      <QuantityButton type="button" onClick={incrementQuantity}>
+        +
+      </QuantityButton>
     </QuantityContainer>
   );
 };
@@ -34,6 +54,10 @@ const QuantityButton = styled.button`
     background: ${colors.lightOrange};
     color: ${colors.white};
     transition: all 0.3s ease-in-out;
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.2;
   }
 `;
 
