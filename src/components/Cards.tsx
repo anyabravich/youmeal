@@ -3,7 +3,7 @@ import Card from "./Card";
 import { rem } from "polished";
 import { ICard, ICards } from "../types";
 
-const Cards = ({ selectedLabel, cards }: ICards) => {
+const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
   const filteredCards = cards.filter(({ category }) =>
     selectedLabel ? category === selectedLabel : true
   );
@@ -24,6 +24,8 @@ const Cards = ({ selectedLabel, cards }: ICards) => {
                   price={price}
                   title={title}
                   weight={weight}
+                  addToBasket={addToBasket}
+                  isAdded={addedItems?.includes(id)}
                 />
               </CardsItem>
             ))}

@@ -5,11 +5,12 @@ import { colors } from "../styles/theme";
 interface IButton {
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
-const Button = ({ children, className }: IButton) => {
+const Button = ({ children, className, onClick }: IButton) => {
   return (
-    <ButtonContainer className={`button ${className}`}>
+    <ButtonContainer className={`button ${className}`} onClick={onClick}>
       {children}
     </ButtonContainer>
   );
@@ -37,6 +38,13 @@ const ButtonContainer = styled.button`
     &:hover {
       background: ${colors.darkOrange};
     }
+  }
+  &._disabled {
+    pointer-events: none;
+    opacity: 0.2;
+  }
+  &._added {
+    pointer-events: none;
   }
 `;
 

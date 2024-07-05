@@ -4,7 +4,15 @@ import { ICard } from "../types";
 import { colors } from "../styles/theme";
 import Button from "./Button";
 
-const Card = ({ image, price, title, weight }: ICard) => {
+const Card = ({
+  id,
+  image,
+  price,
+  title,
+  weight,
+  isAdded,
+  addToBasket,
+}: ICard) => {
   return (
     <CardContainer>
       <CardImage src={`/images/cards/${image}.jpg`} alt={title} />
@@ -13,7 +21,16 @@ const Card = ({ image, price, title, weight }: ICard) => {
       <CardWeight>
         {weight >= 1000 ? weight / 1000 + "кг" : weight + "г."}
       </CardWeight>
-      <Button>Добавить</Button>
+      <Button
+        className={isAdded ? "_orange _added" : ""}
+        onClick={() =>
+          !isAdded &&
+          addToBasket &&
+          addToBasket({ id, image, price, title, weight })
+        }
+      >
+        {isAdded ? "Добавлено" : "Добавить"}
+      </Button>
     </CardContainer>
   );
 };
