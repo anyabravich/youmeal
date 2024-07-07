@@ -55,6 +55,7 @@ const Footer = () => {
 const FooterContainer = styled.footer`
   background: ${colors.white};
   padding-block: ${rem(46)} ${rem(40)};
+  margin-top: auto;
 `;
 
 const FooterTop = styled.div`

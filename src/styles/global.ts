@@ -1,3 +1,4 @@
+import { defineConfig } from "vite";
 import { createGlobalStyle } from "styled-components";
 import { rem } from "polished";
 import { breakpoints, colors } from "./theme";
@@ -24,6 +25,14 @@ export const GlobalStyle = createGlobalStyle`
          url("/fonts/Nunito-Regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
+  }
+  html, body {
+    height: 100%;
+  }
+  #root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   *, *::before, *::after {
     box-sizing: border-box;
