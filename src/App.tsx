@@ -3,6 +3,7 @@ import { LabelProvider } from "./components/LabelContext";
 import Hero from "./components/Hero";
 import Labels from "./components/Labels";
 import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const App: React.FC = () => {
       <Hero />
       <Labels />
       <Main />
+      <Footer />
     </LabelProvider>
   );
 };

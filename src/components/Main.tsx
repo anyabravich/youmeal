@@ -83,7 +83,9 @@ const Main = () => {
   );
 };
 
-const MainContainer = styled.main``;
+const MainContainer = styled.main`
+  margin-bottom: ${rem(50)};
+`;
 
 const MainInner = styled(Container)`
   display: grid;
