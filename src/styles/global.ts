@@ -1,4 +1,3 @@
-import { defineConfig } from "vite";
 import { createGlobalStyle } from "styled-components";
 import { rem } from "polished";
 import { breakpoints, colors } from "./theme";
