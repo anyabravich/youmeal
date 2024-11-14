@@ -1,3 +1,3 @@
 # YouMeal
 
-![Cover](https://i.ibb.co/Xbfgv3h/Notion-Cover.jpg)
+![Cover](https://i.ibb.co/Xbfgv3h/Notion-Cover.jpg){: width="100%" }
