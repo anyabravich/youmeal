@@ -1,4 +1,3 @@
-// Label.js
 import styled from "styled-components";
 import { rem } from "polished";
 import { colors } from "../styles/theme";

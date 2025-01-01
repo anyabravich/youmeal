@@ -20,11 +20,7 @@ const Quantity: React.FC<QuantityProps> = ({ count = 1, setCount }) => {
 
   return (
     <QuantityContainer>
-      <QuantityButton
-        disabled={count === 1}
-        type="button"
-        onClick={decrementQuantity}
-      >
+      <QuantityButton type="button" onClick={decrementQuantity}>
         -
       </QuantityButton>
       <QuantityValue>{count}</QuantityValue>

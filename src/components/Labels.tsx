@@ -3,18 +3,7 @@ import Label from "./Label";
 import { rem } from "polished";
 import styled from "styled-components";
 import { useLabel } from "./LabelContext";
-
-const LabelsData = [
-  { icon: "burger", text: "Бургеры" },
-  { icon: "snacks", text: "Закуски" },
-  { icon: "hot-dog", text: "Хот-доги" },
-  { icon: "combo", text: "Комбо" },
-  { icon: "shaurma", text: "Шаурма" },
-  { icon: "pizza", text: "Пицца" },
-  { icon: "vok", text: "Вок" },
-  { icon: "desert", text: "Десерты" },
-  { icon: "sauces", text: "Соусы" },
-];
+import { labels } from "../mock/labels";
 
 const Labels: React.FC = () => {
   const { selectedLabel, setSelectedLabel } = useLabel();
@@ -26,7 +15,7 @@ const Labels: React.FC = () => {
     <LabelsContainer>
       <Container>
         <LabelsList>
-          {LabelsData.map(({ icon, text }) => (
+          {labels.map(({ icon, text }) => (
             <LabelsItem key={text}>
               <Label
                 icon={icon}
