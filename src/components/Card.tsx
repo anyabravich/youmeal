@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { rem } from "polished";
 import { ICard } from "../types";
-import { breakpoints, colors } from "../styles/theme";
+import { colors } from "../styles/theme";
 import Button from "./Button";
 
 const Card = ({
