@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { rem } from "polished";
 import Quantity from "./Quantity";
-import { colors } from "../styles/theme";
+import { breakpoints, colors } from "../styles/theme";
 import { ICard } from "../types";
 import { formatWeight } from "../utils/formatWeight";
 

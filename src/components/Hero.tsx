@@ -52,11 +52,11 @@ const HeroInner = styled.div`
   gap: ${rem(21)};
   grid-template-columns: ${rem(326)} minmax(auto, ${rem(437)});
 
-  @media (max-width: ${breakpoints.tablet}px) {
-    grid-template-columns: ${rem(227)} minmax(auto, ${rem(437)});
+  @media (max-width: ${breakpoints.laptop}px) {
+    grid-template-columns: ${rem(306)} minmax(auto, ${rem(437)});
   }
 
-  @media (max-width: ${breakpoints.tablet}px) {
+  @media (max-width: ${breakpoints.mobile}px) {
     display: flex;
     align-content: center;
     text-align: center;
@@ -73,7 +73,7 @@ const HeroImage = styled.img`
     --size: ${rem(227)};
   }
 
-  @media (max-width: ${breakpoints.tablet}px) {
+  @media (max-width: ${breakpoints.mobile}px) {
     order: 1;
     margin: 0 auto;
   }

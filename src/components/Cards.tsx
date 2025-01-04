@@ -40,6 +40,10 @@ const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
 const CardsContainer = styled.section`
   margin-bottom: ${rem(50)};
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    margin-top: ${rem(100)};
+  }
 `;
 
 const CardsTitle = styled.h2`

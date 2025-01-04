@@ -6,8 +6,14 @@ import Button from "./Button";
 import { ICards } from "../types";
 import { useState } from "react";
 
+interface BasketContainerProps {
+  $isOpen: boolean;
+}
+
 const Basket = ({ cards }: ICards) => {
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
+
+  const [isOpenBasket, setIsOpenBasket] = useState(false);
 
   const setCount = (id: number, count: number) => {
     setQuantities((prevQuantities) => ({
@@ -22,25 +28,27 @@ const Basket = ({ cards }: ICards) => {
   }, 0);
 
   return (
-    <BasketContainer>
+    <BasketContainer
+      $isOpen={isOpenBasket}
+      onClick={() => setIsOpenBasket(!isOpenBasket)}
+    >
       <BasketTitle className="h3">
         <span>Корзина</span>
         <BasketCount>{cards.length}</BasketCount>
       </BasketTitle>
       {cards.length > 0 ? (
-        <>
+        <BasketContainerMobile $isOpen={isOpenBasket}>
           {cards.map((card) => (
-            <div key={card.id}>
-              <BasketCard
-                title={card.title}
-                weight={card.weight}
-                image={card.image}
-                price={card.price}
-                id={card.id}
-                count={quantities[card.id] || 1}
-                setCount={setCount}
-              />
-            </div>
+            <BasketCard
+              key={card.id}
+              title={card.title}
+              weight={card.weight}
+              image={card.image}
+              price={card.price}
+              id={card.id}
+              count={quantities[card.id] || 1}
+              setCount={setCount}
+            />
           ))}
           <BasketTotal>
             <BasketTotalTitle>Итого</BasketTotalTitle>
@@ -51,7 +59,7 @@ const Basket = ({ cards }: ICards) => {
             <BasketDeliveryImage src="/images/delivery.svg" alt="Доставка" />
             <span>Бесплатная доставка</span>
           </BasketDelivery>
-        </>
+        </BasketContainerMobile>
       ) : (
         <p>Тут пока пусто :(</p>
       )}
@@ -59,7 +67,7 @@ const Basket = ({ cards }: ICards) => {
   );
 };
 
-const BasketContainer = styled.aside`
+const BasketContainer = styled.aside<BasketContainerProps>`
   position: sticky;
   top: ${rem(72)};
   margin-top: ${rem(72)};
@@ -68,7 +76,25 @@ const BasketContainer = styled.aside`
   border-radius: ${rem(18)};
 
   @media (max-width: ${breakpoints.tablet}px) {
-    position: static;
+    position: absolute;
+    top: 0;
+    margin-top: 0;
+
+    ${({ $isOpen }) =>
+      $isOpen &&
+      `
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.16);
+    `}
+  }
+`;
+
+const BasketContainerMobile = styled.div<BasketContainerProps>`
+  @media (max-width: ${breakpoints.tablet}px) {
+    display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
+    background: white;
+    top: ${rem(72)};
+    left: 0;
+    padding: ${rem(24)} ${rem(17)};
   }
 `;
 
@@ -77,6 +103,10 @@ const BasketTitle = styled.h3`
   justify-content: space-between;
   align-items: center;
   margin-bottom: ${rem(12)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    margin-bottom: 0;
+  }
 `;
 
 const BasketCount = styled.span`

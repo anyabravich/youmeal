@@ -49,6 +49,7 @@ const Main = () => {
 };
 
 const MainContainer = styled.main`
+  position: relative;
   margin-bottom: ${rem(50)};
 `;
 

@@ -97,6 +97,9 @@ const FooterContacts = styled.ul`
 
   @media (max-width: ${breakpoints.laptop}px) {
     gap: ${rem(50)};
+  }
+
+  @media (max-width: ${breakpoints.tablet}px) {
     flex-direction: column;
   }
 `;
