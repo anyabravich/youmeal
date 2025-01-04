@@ -39,6 +39,8 @@ const LabelsList = styled.ul`
   display: flex;
   gap: ${rem(24)};
   overflow: auto;
+  padding: 0 var(--container-padding);
+  margin: 0 calc(var(--container-padding) * -1);
 
   &::-webkit-scrollbar {
     display: none;

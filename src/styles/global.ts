@@ -46,6 +46,10 @@ export const GlobalStyle = createGlobalStyle`
     @media (min-width: ${breakpoints.desktop + 1}px) {
       font-size: ${`clamp(16px, ${pxToVw(16, 1440)}, 22px)`};
     }
+    @media (max-width:  ${breakpoints.laptop}px) {
+      font-size: 16px;
+
+    }
   }
   body {
     font-family: "Nunito", sans-serif;

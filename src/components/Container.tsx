@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { rem } from "polished";
+import { breakpoints } from "../styles/theme";
 
 interface IContainer {
   children: React.ReactNode;
@@ -15,6 +16,10 @@ const ContainerWrapper = styled.div`
 
   margin: 0 auto;
   width: min(var(--container-max-width), 100% - (var(--container-padding) * 2));
+
+  @media (max-width: ${breakpoints.laptop}px) {
+    --container-padding: ${rem(32)};
+  }
 `;
 
 export default Container;

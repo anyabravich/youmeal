@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Container from "./Container";
 import { rem } from "polished";
-import { colors } from "../styles/theme";
+import { breakpoints, colors } from "../styles/theme";
 import { Icons } from "./Icons";
 
 const Footer = () => {
@@ -63,6 +63,11 @@ const FooterTop = styled.div`
   align-items: flex-start;
   margin-bottom: ${rem(32)};
   gap: ${rem(355)};
+
+  @media (max-width: ${breakpoints.laptop}px) {
+    gap: initial;
+    justify-content: space-between;
+  }
 `;
 
 const FooterLogo = styled.img`
@@ -81,6 +86,10 @@ const FooterContacts = styled.ul`
   gap: ${rem(126)};
   position: relative;
   top: ${rem(6)};
+
+  @media (max-width: ${breakpoints.laptop}px) {
+    gap: ${rem(50)};
+  }
 `;
 
 const FooterContactsItem = styled.li``;

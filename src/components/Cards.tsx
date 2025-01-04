@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Card from "./Card";
 import { rem } from "polished";
 import { ICard, ICards } from "../types";
+import { breakpoints } from "../styles/theme";
 
 const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
   const filteredCards = cards.filter(({ category }) =>
@@ -48,6 +49,10 @@ const CardsItems = styled.ul`
   display: grid;
   gap: ${rem(30)};
   grid-template-columns: repeat(3, minmax(${rem(300)}, 1fr));
+
+  @media (max-width: ${breakpoints.laptop}px) {
+    grid-template-columns: repeat(auto-fit, minmax(${rem(250)}, 1fr));
+  }
 `;
 
 const CardsItem = styled.li``;

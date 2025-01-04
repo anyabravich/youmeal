@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { rem } from "polished";
 import { ICard } from "../types";
-import { colors } from "../styles/theme";
+import { breakpoints, colors } from "../styles/theme";
 import Button from "./Button";
 
 const Card = ({
@@ -15,7 +15,9 @@ const Card = ({
 }: ICard) => {
   return (
     <CardContainer>
-      <CardImage src={`/images/cards/${image}.jpg`} alt={title} />
+      <CardsImageWrapper>
+        <CardImage src={`/images/cards/${image}.jpg`} alt={title} />
+      </CardsImageWrapper>
       <CardPrice className="text-big">{price}₽</CardPrice>
       <CardTitle className="text">{title}</CardTitle>
       <CardWeight>
@@ -41,10 +43,15 @@ const CardContainer = styled.article`
   background: ${colors.white};
 `;
 
+const CardsImageWrapper = styled.div`
+  aspect-ratio: 276 / 220;
+  border-radius: ${rem(12)};
+  overflow: hidden;
+`;
+
 const CardImage = styled.img`
   width: 100%;
-  height: ${rem(220)};
-  border-radius: ${rem(12)};
+  height: 100%;
   object-fit: cover;
 `;
 
