@@ -68,11 +68,19 @@ const FooterTop = styled.div`
     gap: initial;
     justify-content: space-between;
   }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    flex-direction: column;
+  }
 `;
 
 const FooterLogo = styled.img`
   display: block;
   width: ${rem(305)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    width: ${rem(196)};
+  }
 `;
 
 const FooterIconPhone = styled.img`
@@ -89,6 +97,7 @@ const FooterContacts = styled.ul`
 
   @media (max-width: ${breakpoints.laptop}px) {
     gap: ${rem(50)};
+    flex-direction: column;
   }
 `;
 

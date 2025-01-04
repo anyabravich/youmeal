@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { rem } from "polished";
-import { colors } from "../styles/theme";
+import { breakpoints, colors } from "../styles/theme";
 import BasketCard from "./BasketCard";
 import Button from "./Button";
 import { ICards } from "../types";
@@ -66,6 +66,10 @@ const BasketContainer = styled.aside`
   background: ${colors.white};
   padding: ${rem(24)} ${rem(17)};
   border-radius: ${rem(18)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    position: static;
+  }
 `;
 
 const BasketTitle = styled.h3`

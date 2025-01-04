@@ -7,6 +7,7 @@ import { useLabel } from "./LabelContext";
 import { ICard } from "../types";
 import { useEffect, useState } from "react";
 import { goods } from "../mock/goods";
+import { breakpoints } from "../styles/theme";
 
 const Main = () => {
   const { selectedLabel } = useLabel();
@@ -56,6 +57,11 @@ const MainInner = styled(Container)`
   align-items: flex-start;
   gap: ${rem(30)};
   grid-template-columns: ${rem(300)} 1fr;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default Main;

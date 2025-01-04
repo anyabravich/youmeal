@@ -39,6 +39,7 @@ const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
 
 const CardsContainer = styled.section`
   margin-bottom: ${rem(50)};
+  width: 100%;
 `;
 
 const CardsTitle = styled.h2`
@@ -52,6 +53,10 @@ const CardsItems = styled.ul`
 
   @media (max-width: ${breakpoints.laptop}px) {
     grid-template-columns: repeat(auto-fit, minmax(${rem(250)}, 1fr));
+  }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    grid-template-columns: repeat(auto-fit, minmax(${rem(145)}, 1fr));
   }
 `;
 

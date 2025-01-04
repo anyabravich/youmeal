@@ -59,6 +59,10 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${rem(50)};
     font-weight: 800;
     line-height: 1.2;
+
+    @media (max-width: ${breakpoints.tablet}px) {
+      font-size: ${rem(36)};
+    }
   }
   .h2 {
     font-size: ${rem(40)};
