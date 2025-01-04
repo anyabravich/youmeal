@@ -56,7 +56,7 @@ const CardImage = styled.img`
 `;
 
 const CardPrice = styled.p`
-  margin-block: ${rem(10)} ${rem(8)};
+  margin-block: ${rem(16)} ${rem(8)};
 `;
 
 const CardTitle = styled.p`
