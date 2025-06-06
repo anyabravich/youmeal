@@ -16,16 +16,7 @@ const BasketCard: React.FC<BasketCardProps> = ({
   weight,
   price,
   image,
-  count,
-  id,
-  setCount,
 }: ICard) => {
-  const handleSetCount = (newCount: number) => {
-    if (setCount) {
-      setCount(id, newCount);
-    }
-  };
-
   return (
     <BasketCardContainer>
       <BasketCardImageContainer>
@@ -34,12 +25,16 @@ const BasketCard: React.FC<BasketCardProps> = ({
           alt="Картинка товара"
         />
       </BasketCardImageContainer>
+
       <BasketCardContent>
         <BasketCardTitle>{title}</BasketCardTitle>
+
         <BasketCardWeight>{formatWeight(weight)}</BasketCardWeight>
+
         <BasketCardPrice className="price">{price}₽</BasketCardPrice>
       </BasketCardContent>
-      <Quantity count={count} setCount={handleSetCount} />
+
+      <Quantity />
     </BasketCardContainer>
   );
 };
