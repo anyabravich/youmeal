@@ -1,9 +1,10 @@
 import styled from "styled-components";
+
 import { rem } from "polished";
-import Quantity from "./Quantity";
-import { colors } from "../styles/theme";
-import { ICard } from "../types";
-import { formatWeight } from "../utils/formatWeight";
+import Quantity from "../Quantity";
+import { colors } from "../../styles/theme";
+import { ICard } from "../../types";
+import { formatWeight } from "../../utils/formatWeight";
 
 interface BasketCardProps extends ICard {
   count: number;

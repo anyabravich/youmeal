@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { rem } from "polished";
-import { ICard } from "../types";
-import { colors } from "../styles/theme";
-import Button from "./Button";
+import { ICard } from "../../types";
+import { colors } from "../../styles/theme";
+import Button from "../Button";
 
 const Card = ({
   id,

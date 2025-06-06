@@ -1,4 +1,4 @@
-export const goods = [
+export const GOODS = [
   {
     id: 1,
     image: "card-1",

@@ -1,4 +1,4 @@
-export const labels = [
+export const LABELS = [
   { icon: "burger", text: "Бургеры" },
   { icon: "snacks", text: "Закуски" },
   { icon: "hot-dog", text: "Хот-доги" },

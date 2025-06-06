@@ -1,30 +1,21 @@
 import styled from "styled-components";
+
 import { rem } from "polished";
-import { colors } from "../styles/theme";
+import { colors } from "../../styles/theme";
+import { useQuantity } from "./hooks/useQuantity";
 
-interface QuantityProps {
-  count?: number;
-  setCount: (count: number) => void;
-}
-
-const Quantity: React.FC<QuantityProps> = ({ count = 1, setCount }) => {
-  const decrementQuantity = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
-
-  const incrementQuantity = () => {
-    setCount(count + 1);
-  };
+const Quantity = () => {
+  const { count, increment, decrement } = useQuantity();
 
   return (
     <QuantityContainer>
-      <QuantityButton type="button" onClick={decrementQuantity}>
+      <QuantityButton type="button" onClick={decrement}>
         -
       </QuantityButton>
+
       <QuantityValue>{count}</QuantityValue>
-      <QuantityButton type="button" onClick={incrementQuantity}>
+
+      <QuantityButton type="button" onClick={increment}>
         +
       </QuantityButton>
     </QuantityContainer>

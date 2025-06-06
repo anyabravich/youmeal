@@ -7,7 +7,6 @@ export interface ICard {
   category?: string;
   count?: number;
   setCount?: (id: number, count: number) => void;
-
   addToBasket?: (cardData: {
     id: number;
     image: string;

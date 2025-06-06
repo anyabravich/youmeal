@@ -1,12 +1,14 @@
-import Container from "./Container";
-import Label from "./Label";
-import { rem } from "polished";
 import styled from "styled-components";
-import { useLabel } from "./LabelContext";
-import { labels } from "../mock/labels";
 
-const Labels: React.FC = () => {
+import Container from "../Container";
+import Label from "../Label";
+import { rem } from "polished";
+import { useLabel } from "../LabelContext";
+import { LABELS } from "./data";
+
+const Labels = () => {
   const { selectedLabel, setSelectedLabel } = useLabel();
+
   const handleLabelClick = (text: string) => {
     setSelectedLabel(text === selectedLabel ? null : text);
   };
@@ -15,15 +17,15 @@ const Labels: React.FC = () => {
     <LabelsContainer>
       <Container>
         <LabelsList>
-          {labels.map(({ icon, text }) => (
-            <LabelsItem key={text}>
+          {LABELS.map(({ icon, text }) => (
+            <li key={text}>
               <Label
                 icon={icon}
                 text={text}
                 isActive={text === selectedLabel}
                 onClick={() => handleLabelClick(text)}
               />
-            </LabelsItem>
+            </li>
           ))}
         </LabelsList>
       </Container>
@@ -46,7 +48,5 @@ const LabelsList = styled.ul`
     display: none;
   }
 `;
-
-const LabelsItem = styled.li``;
 
 export default Labels;

@@ -1,35 +1,35 @@
-import Container from "./Container";
 import styled from "styled-components";
+
+import Container from "../Container";
 import { rem } from "polished";
-import Header from "./Header";
-import { breakpoints, colors } from "../styles/theme";
+import Header from "../Header";
+import { breakpoints, colors } from "../../styles/theme";
 
 const Hero = () => {
   return (
-    <HeroContainer>
+    <Wrapper>
       <Header />
+
       <Container>
-        <HeroInner>
-          <HeroImage
-            src="/images/burger.svg"
-            alt="Бургер"
-            aria-label="Бургер"
-          />
-          <HeroTexts>
-            <HeroTitle className="h1">
+        <Inner>
+          <Image src="/images/burger.svg" alt="Бургер" aria-label="Бургер" />
+
+          <Texts>
+            <Title className="h1">
               Только самые <span>сочные бургеры!</span>
-            </HeroTitle>
-            <HeroText className="text">
+            </Title>
+
+            <Text className="text">
               Бесплатная доставка от <span>599₽</span>
-            </HeroText>
-          </HeroTexts>
-        </HeroInner>
+            </Text>
+          </Texts>
+        </Inner>
       </Container>
-    </HeroContainer>
+    </Wrapper>
   );
 };
 
-const HeroContainer = styled.section`
+const Wrapper = styled.section`
   color: ${colors.white};
   padding-top: ${rem(22)};
   min-height: ${rem(466)};
@@ -46,7 +46,7 @@ const HeroContainer = styled.section`
   }
 `;
 
-const HeroInner = styled.div`
+const Inner = styled.div`
   display: grid;
   justify-content: center;
   gap: ${rem(21)};
@@ -64,8 +64,9 @@ const HeroInner = styled.div`
   }
 `;
 
-const HeroImage = styled.img`
+const Image = styled.img`
   --size: ${rem(326)};
+
   width: var(--size);
   height: var(--size);
 
@@ -79,11 +80,11 @@ const HeroImage = styled.img`
   }
 `;
 
-const HeroTexts = styled.div`
+const Texts = styled.div`
   margin-top: ${rem(40)};
 `;
 
-const HeroTitle = styled.h1`
+const Title = styled.h1`
   position: relative;
   top: ${rem(4)};
   margin-bottom: ${rem(56)};
@@ -93,7 +94,7 @@ const HeroTitle = styled.h1`
   }
 `;
 
-const HeroText = styled.p`
+const Text = styled.p`
   span {
     font-weight: 600;
   }

@@ -1,12 +1,10 @@
 import styled from "styled-components";
+
 import { rem } from "polished";
-import { breakpoints } from "../styles/theme";
+import { breakpoints } from "../../styles/theme";
+import { PropsWithChildren } from "react";
 
-interface IContainer {
-  children: React.ReactNode;
-}
-
-const Container = ({ children, ...props }: IContainer) => {
+const Container = ({ children, ...props }: PropsWithChildren) => {
   return <ContainerWrapper {...props}>{children}</ContainerWrapper>;
 };
 

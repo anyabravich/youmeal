@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import Card from "./Card";
+
+import Card from "../Card";
 import { rem } from "polished";
-import { ICard, ICards } from "../types";
-import { breakpoints } from "../styles/theme";
+import { ICard, ICards } from "../../types";
+import { breakpoints } from "../../styles/theme";
 
 const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
   const filteredCards = cards.filter(({ category }) =>

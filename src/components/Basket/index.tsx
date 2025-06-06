@@ -1,41 +1,25 @@
 import styled from "styled-components";
-import { rem } from "polished";
-import { breakpoints, colors } from "../styles/theme";
-import BasketCard from "./BasketCard";
-import Button from "./Button";
-import { ICards } from "../types";
-import { useState } from "react";
 
-interface BasketContainerProps {
-  $isOpen: boolean;
-}
+import { rem } from "polished";
+import { breakpoints, colors } from "../../styles/theme";
+import BasketCard from "../BasketCard";
+import Button from "../Button";
+import { ICards } from "../../types";
+import { IBasketStyled } from "./types";
+import { useBasket } from "./hooks/useBasket";
 
 const Basket = ({ cards }: ICards) => {
-  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
-
-  const [isOpenBasket, setIsOpenBasket] = useState(false);
-
-  const setCount = (id: number, count: number) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [id]: count,
-    }));
-  };
-
-  const totalPrice = cards.reduce((total, card) => {
-    const count = quantities[card.id] || 1;
-    return total + card.price * count;
-  }, 0);
+  const { isOpenBasket, toggleBasket, quantities, setCount, totalPrice } =
+    useBasket(cards);
 
   return (
-    <BasketContainer
-      $isOpen={isOpenBasket}
-      onClick={() => setIsOpenBasket(!isOpenBasket)}
-    >
+    <BasketContainer $isOpen={isOpenBasket} onClick={toggleBasket}>
       <BasketTitle className="h3">
         <span>Корзина</span>
+
         <BasketCount>{cards.length}</BasketCount>
       </BasketTitle>
+
       {cards.length > 0 ? (
         <BasketContainerMobile $isOpen={isOpenBasket}>
           {cards.map((card) => (
@@ -50,11 +34,14 @@ const Basket = ({ cards }: ICards) => {
               setCount={setCount}
             />
           ))}
+
           <BasketTotal>
             <BasketTotalTitle>Итого</BasketTotalTitle>
             <BasketTotalPrice>{totalPrice}₽</BasketTotalPrice>
           </BasketTotal>
+
           <BasketButton className="_orange">Оформить заказ</BasketButton>
+
           <BasketDelivery>
             <BasketDeliveryImage src="/images/delivery.svg" alt="Доставка" />
             <span>Бесплатная доставка</span>
@@ -67,7 +54,7 @@ const Basket = ({ cards }: ICards) => {
   );
 };
 
-const BasketContainer = styled.aside<BasketContainerProps>`
+const BasketContainer = styled.aside<IBasketStyled>`
   position: sticky;
   top: ${rem(72)};
   margin-top: ${rem(72)};
@@ -88,7 +75,7 @@ const BasketContainer = styled.aside<BasketContainerProps>`
   }
 `;
 
-const BasketContainerMobile = styled.div<BasketContainerProps>`
+const BasketContainerMobile = styled.div<IBasketStyled>`
   @media (max-width: ${breakpoints.tablet}px) {
     display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
     background: white;
@@ -142,6 +129,7 @@ const BasketDelivery = styled.p`
 
 const BasketDeliveryImage = styled.img`
   --size: ${rem(24)};
+
   width: var(--size);
   height: var(--size);
 `;

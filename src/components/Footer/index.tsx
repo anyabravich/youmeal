@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Container from "./Container";
+import Container from "../Container";
 import { rem } from "polished";
-import { breakpoints, colors } from "../styles/theme";
-import { Icons } from "./Icons";
+import { breakpoints, colors } from "../../styles/theme";
+import Icons from "../Icons";
 
 const Footer = () => {
   return (
@@ -27,7 +27,7 @@ const Footer = () => {
                     target="_blank"
                     aria-label="VK"
                   >
-                    <Icons name="vk" />
+                    <Icons.Vk />
                   </FooterSocialsItemLink>
                 </FooterSocialsItem>
                 <FooterSocialsItem>
@@ -36,7 +36,7 @@ const Footer = () => {
                     target="_blank"
                     aria-label="Telegram"
                   >
-                    <Icons name="tg" />
+                    <Icons.Telegram />
                   </FooterSocialsItemLink>
                 </FooterSocialsItem>
               </FooterSocials>

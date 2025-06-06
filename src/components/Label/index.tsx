@@ -1,28 +1,23 @@
 import styled from "styled-components";
 import { rem } from "polished";
-import { colors } from "../styles/theme";
-
-interface ILabel {
-  icon: string;
-  text: string;
-  isActive: boolean;
-  onClick: () => void;
-}
+import { colors } from "../../styles/theme";
+import { ILabel } from "./types";
 
 const Label = ({ icon, text, isActive, onClick }: ILabel) => {
   return (
-    <LabelContainer
+    <Container
       type="button"
       className={isActive ? "_active" : ""}
       onClick={onClick}
     >
-      <LabelImage src={`/images/labels/${icon}.png`} alt={icon} />
-      <LabelText className="text">{text}</LabelText>
-    </LabelContainer>
+      <Image src={`/images/labels/${icon}.png`} alt={icon} />
+
+      <Text className="text">{text}</Text>
+    </Container>
   );
 };
 
-const LabelContainer = styled.button`
+const Container = styled.button`
   display: flex;
   gap: ${rem(8)};
   align-items: center;
@@ -36,13 +31,14 @@ const LabelContainer = styled.button`
   }
 `;
 
-const LabelImage = styled.img`
+const Image = styled.img`
   --size: ${rem(24)};
+
   width: var(--size);
   height: var(--size);
 `;
 
-const LabelText = styled.p`
+const Text = styled.span`
   white-space: nowrap;
 `;
 
