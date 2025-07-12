@@ -3,25 +3,25 @@ import styled from "styled-components";
 import { rem } from "polished";
 import { breakpoints, colors } from "../../styles/theme";
 import BasketCard from "../BasketCard";
-import Button from "../Button";
 import { ICards } from "../../types";
 import { IBasketStyled } from "./types";
 import { useBasket } from "./hooks/useBasket";
+import Button from "../ui/Button";
 
 const Basket = ({ cards }: ICards) => {
   const { isOpenBasket, toggleBasket, quantities, setCount, totalPrice } =
     useBasket(cards);
 
   return (
-    <BasketContainer $isOpen={isOpenBasket} onClick={toggleBasket}>
-      <BasketTitle className="h3">
+    <Container $isOpen={isOpenBasket} onClick={toggleBasket}>
+      <Title className="h3">
         <span>Корзина</span>
 
-        <BasketCount>{cards.length}</BasketCount>
-      </BasketTitle>
+        <Count>{cards.length}</Count>
+      </Title>
 
       {cards.length > 0 ? (
-        <BasketContainerMobile $isOpen={isOpenBasket}>
+        <ContainerMobile $isOpen={isOpenBasket}>
           {cards.map((card) => (
             <BasketCard
               key={card.id}
@@ -36,8 +36,8 @@ const Basket = ({ cards }: ICards) => {
           ))}
 
           <BasketTotal>
-            <BasketTotalTitle>Итого</BasketTotalTitle>
-            <BasketTotalPrice>{totalPrice}₽</BasketTotalPrice>
+            <p>Итого</p>
+            <p>{totalPrice}₽</p>
           </BasketTotal>
 
           <BasketButton className="_orange">Оформить заказ</BasketButton>
@@ -46,15 +46,15 @@ const Basket = ({ cards }: ICards) => {
             <BasketDeliveryImage src="/images/delivery.svg" alt="Доставка" />
             <span>Бесплатная доставка</span>
           </BasketDelivery>
-        </BasketContainerMobile>
+        </ContainerMobile>
       ) : (
         <p>Тут пока пусто :(</p>
       )}
-    </BasketContainer>
+    </Container>
   );
 };
 
-const BasketContainer = styled.aside<IBasketStyled>`
+const Container = styled.aside<IBasketStyled>`
   position: sticky;
   top: ${rem(72)};
   margin-top: ${rem(72)};
@@ -75,17 +75,17 @@ const BasketContainer = styled.aside<IBasketStyled>`
   }
 `;
 
-const BasketContainerMobile = styled.div<IBasketStyled>`
+const ContainerMobile = styled.div<IBasketStyled>`
   @media (max-width: ${breakpoints.tablet}px) {
     display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
-    background: white;
+    background: ${colors.white};
     top: ${rem(72)};
     left: 0;
     padding: ${rem(24)} ${rem(17)};
   }
 `;
 
-const BasketTitle = styled.h3`
+const Title = styled.h3`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,7 +96,7 @@ const BasketTitle = styled.h3`
   }
 `;
 
-const BasketCount = styled.span`
+const Count = styled.span`
   padding: ${rem(2)} ${rem(16)};
   font-size: ${rem(12)};
   line-height: normal;
@@ -110,10 +110,6 @@ const BasketTotal = styled.div`
   align-items: center;
   margin-block: ${rem(16)} ${rem(24)};
 `;
-
-const BasketTotalTitle = styled.p``;
-
-const BasketTotalPrice = styled.p``;
 
 const BasketButton = styled(Button)`
   margin-bottom: ${rem(8)};

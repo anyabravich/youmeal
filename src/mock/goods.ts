@@ -1,7 +1,7 @@
 export const GOODS = [
   {
     id: 1,
-    image: "card-1",
+    image: "/images/cards/card-1.jpg",
     price: 689,
     title: "Мясная бомба",
     weight: 520,
@@ -9,7 +9,7 @@ export const GOODS = [
   },
   {
     id: 2,
-    image: "card-2",
+    image: "/images/cards/card-2.jpg",
     price: 550,
     title: "Супер сырный",
     weight: 512,
@@ -17,7 +17,7 @@ export const GOODS = [
   },
   {
     id: 3,
-    image: "card-3",
+    image: "/images/cards/card-3.jpg",
     price: 639,
     title: "Сытный",
     weight: 580,
@@ -25,7 +25,7 @@ export const GOODS = [
   },
   {
     id: 4,
-    image: "card-4",
+    image: "/images/cards/card-4.jpg",
     price: 480,
     title: "Тяжелый удар",
     weight: 470,
@@ -33,7 +33,7 @@ export const GOODS = [
   },
   {
     id: 5,
-    image: "card-5",
+    image: "/images/cards/card-5.jpg",
     price: 450,
     title: "Вечная классика",
     weight: 450,
@@ -41,7 +41,7 @@ export const GOODS = [
   },
   {
     id: 6,
-    image: "card-6",
+    image: "/images/cards/card-6.jpg",
     price: 560,
     title: "Итальянский",
     weight: 510,
@@ -49,7 +49,7 @@ export const GOODS = [
   },
   {
     id: 7,
-    image: "card-7",
+    image: "/images/cards/card-7.jpg",
     price: 250,
     title: "Начос",
     weight: 220,
@@ -57,7 +57,7 @@ export const GOODS = [
   },
   {
     id: 8,
-    image: "card-8",
+    image: "/images/cards/card-8.jpg",
     price: 245,
     title: "Картошка фри",
     weight: 180,
@@ -65,7 +65,7 @@ export const GOODS = [
   },
   {
     id: 9,
-    image: "card-9",
+    image: "/images/cards/card-9.jpg",
     price: 230,
     title: "Луковые кольца",
     weight: 160,
@@ -73,7 +73,7 @@ export const GOODS = [
   },
   {
     id: 10,
-    image: "card-10",
+    image: "/images/cards/card-10.jpg",
     price: 290,
     title: "Домашний хот-дог",
     weight: 250,
@@ -81,7 +81,7 @@ export const GOODS = [
   },
   {
     id: 11,
-    image: "card-11",
+    image: "/images/cards/card-11.jpg",
     price: 239,
     title: "Жгучий хот-дог",
     weight: 245,
@@ -89,7 +89,7 @@ export const GOODS = [
   },
   {
     id: 12,
-    image: "card-12",
+    image: "/images/cards/card-12.jpg",
     price: 220,
     title: "Классический хот-дог",
     weight: 215,

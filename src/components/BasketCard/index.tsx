@@ -5,41 +5,35 @@ import Quantity from "../Quantity";
 import { colors } from "../../styles/theme";
 import { ICard } from "../../types";
 import { formatWeight } from "../../utils/formatWeight";
+import { FC } from "react";
+import { BasketCardProps } from "./types";
 
-interface BasketCardProps extends ICard {
-  count: number;
-  setCount: (id: number, count: number) => void;
-}
-
-const BasketCard: React.FC<BasketCardProps> = ({
+const BasketCard: FC<BasketCardProps> = ({
   title,
   weight,
   price,
   image,
 }: ICard) => {
   return (
-    <BasketCardContainer>
-      <BasketCardImageContainer>
-        <BasketCardImage
-          src={`/images/cards/${image}.jpg`}
-          alt="Картинка товара"
-        />
-      </BasketCardImageContainer>
+    <Container>
+      <ImageContainer>
+        <Image src={image} alt="Картинка товара" />
+      </ImageContainer>
 
-      <BasketCardContent>
-        <BasketCardTitle>{title}</BasketCardTitle>
+      <Content>
+        <Title>{title}</Title>
 
-        <BasketCardWeight>{formatWeight(weight)}</BasketCardWeight>
+        <Weight>{formatWeight(weight)}</Weight>
 
-        <BasketCardPrice className="price">{price}₽</BasketCardPrice>
-      </BasketCardContent>
+        <p className="price">{price}₽</p>
+      </Content>
 
       <Quantity />
-    </BasketCardContainer>
+    </Container>
   );
 };
 
-const BasketCardContainer = styled.article`
+const Container = styled.article`
   display: grid;
   align-items: flex-start;
   gap: ${rem(6)};
@@ -50,7 +44,7 @@ const BasketCardContainer = styled.article`
   box-sizing: border-box;
 `;
 
-const BasketCardImageContainer = styled.div`
+const ImageContainer = styled.div`
   width: ${rem(64)};
   height: ${rem(52)};
   border-radius: ${rem(12)};
@@ -58,26 +52,24 @@ const BasketCardImageContainer = styled.div`
   border-radius: ${rem(8)};
 `;
 
-const BasketCardImage = styled.img`
+const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 
-const BasketCardContent = styled.div`
+const Content = styled.div`
   font-size: ${rem(12)};
   line-height: normal;
 `;
 
-const BasketCardTitle = styled.p`
+const Title = styled.p`
   margin-bottom: ${rem(1)};
 `;
 
-const BasketCardWeight = styled.p`
+const Weight = styled.p`
   color: ${colors.silver};
   margin-bottom: ${rem(4)};
 `;
-
-const BasketCardPrice = styled.p``;
 
 export default BasketCard;

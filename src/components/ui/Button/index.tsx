@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 import { rem } from "polished";
-import { colors } from "../../styles/theme";
 import { IButton } from "./types";
+import { colors } from "../../../styles/theme";
 
 const Button = ({ children, className, onClick }: IButton) => {
   return (
-    <Container className={`button ${className}`} onClick={onClick}>
+    <Container
+      className={`button ${className}`}
+      onClick={onClick}
+      type="button"
+    >
       {children}
     </Container>
   );

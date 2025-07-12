@@ -108,8 +108,9 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  button,
   a {
-    color: ${colors.black};
+    color: inherit;
   }
 `;
 

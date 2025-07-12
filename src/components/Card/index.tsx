@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { rem } from "polished";
 import { ICard } from "../../types";
 import { colors } from "../../styles/theme";
-import Button from "../Button";
+import Button from "../ui/Button";
 
 const Card = ({
   id,
@@ -16,13 +16,17 @@ const Card = ({
   return (
     <CardContainer>
       <CardsImageWrapper>
-        <CardImage src={`/images/cards/${image}.jpg`} alt={title} />
+        <CardImage src={image} alt={title} />
       </CardsImageWrapper>
+
       <CardPrice className="text-big">{price}₽</CardPrice>
+
       <CardTitle className="text">{title}</CardTitle>
+
       <CardWeight>
         {weight >= 1000 ? weight / 1000 + "кг" : weight + "г."}
       </CardWeight>
+
       <Button
         className={isAdded ? "_orange _added" : ""}
         onClick={() =>
