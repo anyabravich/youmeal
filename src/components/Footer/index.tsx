@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import Container from "../Container";
 import { rem } from "polished";
 import { breakpoints, colors } from "../../styles/theme";
@@ -21,7 +22,7 @@ const Footer = () => {
             <FooterContactsItem>
               <FooterContactsTitle>Мы в соцсетях</FooterContactsTitle>
               <FooterSocials>
-                <FooterSocialsItem>
+                <li>
                   <FooterSocialsItemLink
                     href="https://vk.com"
                     target="_blank"
@@ -29,8 +30,8 @@ const Footer = () => {
                   >
                     <Icons.Vk />
                   </FooterSocialsItemLink>
-                </FooterSocialsItem>
-                <FooterSocialsItem>
+                </li>
+                <li>
                   <FooterSocialsItemLink
                     href="https://t.me"
                     target="_blank"
@@ -38,13 +39,13 @@ const Footer = () => {
                   >
                     <Icons.Telegram />
                   </FooterSocialsItemLink>
-                </FooterSocialsItem>
+                </li>
               </FooterSocials>
             </FooterContactsItem>
           </FooterContacts>
         </FooterTop>
         <FooterCopyright>
-          <span>&copy;&nbsp;YouMeal, 2022</span>
+          <span>&copy;&nbsp;YouMeal, {new Date().getFullYear()}</span>
           <span>Design: Anastasia Ilina</span>
         </FooterCopyright>
       </Container>
@@ -125,8 +126,6 @@ const FooterSocials = styled.ul`
   display: flex;
   gap: ${rem(16)};
 `;
-
-const FooterSocialsItem = styled.li``;
 
 const FooterSocialsItemLink = styled.a`
   display: inline-block;

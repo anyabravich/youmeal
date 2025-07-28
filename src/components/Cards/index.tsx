@@ -12,28 +12,26 @@ const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
 
   return (
     <CardsContainer>
-      <CardsTitle className="h2">{selectedLabel || "Все"}</CardsTitle>
-      <>
-        {filteredCards.length === 0 ? (
-          <p>Ничего не найдено</p>
-        ) : (
-          <CardsItems>
-            {filteredCards.map(({ id, image, price, title, weight }: ICard) => (
-              <CardsItem key={id}>
-                <Card
-                  id={id}
-                  image={image}
-                  price={price}
-                  title={title}
-                  weight={weight}
-                  addToBasket={addToBasket}
-                  isAdded={addedItems?.includes(id)}
-                />
-              </CardsItem>
-            ))}
-          </CardsItems>
-        )}
-      </>
+      <CardsTitle className="h2">{selectedLabel}</CardsTitle>
+      {filteredCards.length === 0 ? (
+        <p>Ничего не найдено</p>
+      ) : (
+        <CardsItems>
+          {filteredCards.map(({ id, image, price, title, weight }: ICard) => (
+            <li key={id}>
+              <Card
+                id={id}
+                image={image}
+                price={price}
+                title={title}
+                weight={weight}
+                addToBasket={addToBasket}
+                isAdded={addedItems?.includes(id)}
+              />
+            </li>
+          ))}
+        </CardsItems>
+      )}
     </CardsContainer>
   );
 };
@@ -64,7 +62,5 @@ const CardsItems = styled.ul`
     grid-template-columns: repeat(auto-fit, minmax(${rem(145)}, 1fr));
   }
 `;
-
-const CardsItem = styled.li``;
 
 export default Cards;

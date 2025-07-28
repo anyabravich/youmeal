@@ -1,14 +1,10 @@
 import { createContext, useState, useContext, ReactNode, FC } from "react";
+import { ILabelContext } from "./types";
 
-interface LabelContextType {
-  selectedLabel: string | null;
-  setSelectedLabel: (label: string | null) => void;
-}
-
-const LabelContext = createContext<LabelContextType | undefined>(undefined);
+const LabelContext = createContext<ILabelContext | undefined>(undefined);
 
 export const LabelProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [selectedLabel, setSelectedLabel] = useState<string | null>(null);
+  const [selectedLabel, setSelectedLabel] = useState<string | null>("Бургеры");
 
   return (
     <LabelContext.Provider value={{ selectedLabel, setSelectedLabel }}>
@@ -17,10 +13,12 @@ export const LabelProvider: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-export const useLabel = (): LabelContextType => {
+export const useLabel = (): ILabelContext => {
   const context = useContext(LabelContext);
+
   if (!context) {
     throw new Error("useLabel must be used within a LabelProvider");
   }
+
   return context;
 };
