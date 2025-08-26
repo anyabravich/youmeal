@@ -2,20 +2,23 @@ import styled from "styled-components";
 
 import { rem } from "polished";
 import { colors } from "../../styles/theme";
-import { useQuantity } from "./hooks/useQuantity";
 
-const Quantity = () => {
-  const { count, increment, decrement } = useQuantity();
+interface QuantityProps {
+  count: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
+}
 
+const Quantity = ({ count, onIncrement, onDecrement }: QuantityProps) => {
   return (
     <QuantityContainer>
-      <QuantityButton type="button" onClick={decrement}>
+      <QuantityButton type="button" onClick={onDecrement}>
         -
       </QuantityButton>
 
       <QuantityValue>{count}</QuantityValue>
 
-      <QuantityButton type="button" onClick={increment}>
+      <QuantityButton type="button" onClick={onIncrement}>
         +
       </QuantityButton>
     </QuantityContainer>

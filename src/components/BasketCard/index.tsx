@@ -3,17 +3,21 @@ import styled from "styled-components";
 import { rem } from "polished";
 import Quantity from "../Quantity";
 import { colors } from "../../styles/theme";
-import { ICard } from "../../types";
+
 import { formatWeight } from "../../utils/formatWeight";
 import { FC } from "react";
 import { BasketCardProps } from "./types";
 
 const BasketCard: FC<BasketCardProps> = ({
+  id,
   title,
   weight,
   price,
   image,
-}: ICard) => {
+  count,
+  setCount,
+  removeFromBasket,
+}) => {
   return (
     <Container>
       <ImageContainer>
@@ -28,7 +32,17 @@ const BasketCard: FC<BasketCardProps> = ({
         <p className="price">{price}₽</p>
       </Content>
 
-      <Quantity />
+      <Quantity
+        count={count}
+        onIncrement={() => setCount(id, count + 1)}
+        onDecrement={() => {
+          if (count === 1) {
+            removeFromBasket && removeFromBasket(id);
+          } else {
+            setCount(id, count - 1);
+          }
+        }}
+      />
     </Container>
   );
 };

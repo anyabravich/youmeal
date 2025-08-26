@@ -11,12 +11,13 @@ import { useBasketStorage } from "./hooks/useBasketStorage";
 
 const Main = () => {
   const { selectedLabel } = useLabel();
-  const { basketData, addedItems, addToBasket } = useBasketStorage();
+  const { basketData, addedItems, addToBasket, removeFromBasket } =
+    useBasketStorage();
 
   return (
     <MainContainer>
       <MainInner>
-        <Basket cards={basketData} />
+        <Basket cards={basketData} removeFromBasket={removeFromBasket} />
 
         <Cards
           cards={GOODS}

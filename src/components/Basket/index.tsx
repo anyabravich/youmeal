@@ -8,7 +8,7 @@ import { IBasketStyled } from "./types";
 import { useBasket } from "./hooks/useBasket";
 import Button from "../ui/Button";
 
-const Basket = ({ cards }: ICards) => {
+const Basket = ({ cards, removeFromBasket }: ICards) => {
   const { isOpenBasket, toggleBasket, quantities, setCount, totalPrice } =
     useBasket(cards);
 
@@ -32,6 +32,7 @@ const Basket = ({ cards }: ICards) => {
               id={card.id}
               count={quantities[card.id] || 1}
               setCount={setCount}
+              removeFromBasket={removeFromBasket}
             />
           ))}
 

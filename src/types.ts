@@ -15,6 +15,7 @@ export interface ICard {
     weight: number;
   }) => void;
   isAdded?: boolean;
+  removeFromBasket?: (id: number) => void;
 }
 
 export interface ICards {
@@ -22,4 +23,5 @@ export interface ICards {
   cards: ICard[] | [];
   addToBasket?: (card: ICard) => void;
   addedItems?: number[];
+  removeFromBasket?: (id: number) => void;
 }

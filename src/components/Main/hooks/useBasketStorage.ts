@@ -21,9 +21,17 @@ export const useBasketStorage = () => {
     setAddedItems((prev) => [...prev, card.id]);
   };
 
+  const removeFromBasket = (id: number) => {
+    const updatedBasket = basketData.filter((item) => item.id !== id);
+    localStorage.setItem("basket", JSON.stringify(updatedBasket));
+    setBasketData(updatedBasket);
+    setAddedItems((prev) => prev.filter((itemId) => itemId !== id));
+  };
+
   return {
     basketData,
     addedItems,
     addToBasket,
+    removeFromBasket,
   };
 };
