@@ -4,11 +4,10 @@ import Card from "../Card";
 import { rem } from "polished";
 import { ICards, IProduct } from "../../types";
 import { breakpoints } from "../../styles/theme";
+import { useFilteredCards } from "./hooks";
 
 const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
-  const filteredCards = cards.filter((card) =>
-    selectedLabel ? card.category === selectedLabel : true
-  );
+  const filteredCards = useFilteredCards(cards, selectedLabel);
 
   return (
     <CardsContainer>
