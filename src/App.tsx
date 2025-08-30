@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { LabelProvider } from "./components/LabelContext";
-import Hero from "./components/Hero";
-import Labels from "./components/Labels";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-import ErrorBoundary from "./components/ErrorBoundary";
+import { LabelProvider } from "./components/common/LabelContext";
+import Hero from "./components/features/Hero";
+import Labels from "./components/features/Labels";
+import Main from "./components/layout/Main";
+import Footer from "./components/layout/Footer";
+import ErrorBoundary from "./components/common/ErrorBoundary";
 
 const App: FC = () => {
   return (
