@@ -4,11 +4,11 @@ import { rem } from "polished";
 import { IButton } from "./types";
 import { colors } from "../../../styles/theme";
 
-const Button = ({ children, className, onClick }: IButton) => {
+const Button = ({ children, className, data, onClick }: IButton) => {
   return (
     <Container
       className={`button ${className}`}
-      onClick={onClick}
+      onClick={() => onClick?.(data)}
       type="button"
     >
       {children}

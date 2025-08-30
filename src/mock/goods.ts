@@ -1,11 +1,13 @@
-export const GOODS = [
+import { IProduct, ProductCategory } from "../types";
+
+export const GOODS: IProduct[] = [
   {
     id: 1,
     image: "/images/cards/card-1.jpg",
     price: 689,
     title: "Мясная бомба",
     weight: 520,
-    category: "Бургеры",
+    category: ProductCategory.BURGERS,
   },
   {
     id: 2,
@@ -13,7 +15,7 @@ export const GOODS = [
     price: 550,
     title: "Супер сырный",
     weight: 512,
-    category: "Бургеры",
+    category: ProductCategory.BURGERS,
   },
   {
     id: 3,
@@ -21,7 +23,7 @@ export const GOODS = [
     price: 639,
     title: "Сытный",
     weight: 580,
-    category: "Бургеры",
+    category: ProductCategory.BURGERS,
   },
   {
     id: 4,
@@ -29,7 +31,7 @@ export const GOODS = [
     price: 480,
     title: "Тяжелый удар",
     weight: 470,
-    category: "Бургеры",
+    category: ProductCategory.BURGERS,
   },
   {
     id: 5,
@@ -37,7 +39,7 @@ export const GOODS = [
     price: 450,
     title: "Вечная классика",
     weight: 450,
-    category: "Бургеры",
+    category: ProductCategory.BURGERS,
   },
   {
     id: 6,
@@ -45,7 +47,7 @@ export const GOODS = [
     price: 560,
     title: "Итальянский",
     weight: 510,
-    category: "Бургеры",
+    category: ProductCategory.BURGERS,
   },
   {
     id: 7,
@@ -53,7 +55,7 @@ export const GOODS = [
     price: 250,
     title: "Начос",
     weight: 220,
-    category: "Закуски",
+    category: ProductCategory.SNACKS,
   },
   {
     id: 8,
@@ -61,7 +63,7 @@ export const GOODS = [
     price: 245,
     title: "Картошка фри",
     weight: 180,
-    category: "Закуски",
+    category: ProductCategory.SNACKS,
   },
   {
     id: 9,
@@ -69,7 +71,7 @@ export const GOODS = [
     price: 230,
     title: "Луковые кольца",
     weight: 160,
-    category: "Закуски",
+    category: ProductCategory.SNACKS,
   },
   {
     id: 10,
@@ -77,7 +79,7 @@ export const GOODS = [
     price: 290,
     title: "Домашний хот-дог",
     weight: 250,
-    category: "Хот-доги",
+    category: ProductCategory.HOT_DOGS,
   },
   {
     id: 11,
@@ -85,7 +87,7 @@ export const GOODS = [
     price: 239,
     title: "Жгучий хот-дог",
     weight: 245,
-    category: "Хот-доги",
+    category: ProductCategory.HOT_DOGS,
   },
   {
     id: 12,
@@ -93,6 +95,6 @@ export const GOODS = [
     price: 220,
     title: "Классический хот-дог",
     weight: 215,
-    category: "Хот-доги",
+    category: ProductCategory.HOT_DOGS,
   },
 ];

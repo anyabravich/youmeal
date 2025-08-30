@@ -2,31 +2,32 @@ import styled from "styled-components";
 
 import Card from "../Card";
 import { rem } from "polished";
-import { ICard, ICards } from "../../types";
+import { ICards, IProduct } from "../../types";
 import { breakpoints } from "../../styles/theme";
 
 const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
-  const filteredCards = cards.filter(({ category }) =>
-    selectedLabel ? category === selectedLabel : true
+  const filteredCards = cards.filter((card) =>
+    selectedLabel ? card.category === selectedLabel : true
   );
 
   return (
     <CardsContainer>
       <CardsTitle className="h2">{selectedLabel}</CardsTitle>
       {filteredCards.length === 0 ? (
-        <p>Ничего не найдено</p>
+        <p>Ничего не найдено</p>
       ) : (
         <CardsItems>
-          {filteredCards.map(({ id, image, price, title, weight }: ICard) => (
-            <li key={id}>
+          {filteredCards.map((card: IProduct) => (
+            <li key={card.id}>
               <Card
-                id={id}
-                image={image}
-                price={price}
-                title={title}
-                weight={weight}
-                addToBasket={addToBasket}
-                isAdded={addedItems?.includes(id)}
+                id={card.id}
+                image={card.image}
+                price={card.price}
+                title={card.title}
+                weight={card.weight}
+                category={card.category}
+                addToBasket={addToBasket || (() => {})}
+                isAdded={addedItems?.includes(card.id) || false}
               />
             </li>
           ))}

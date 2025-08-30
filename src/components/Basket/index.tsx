@@ -30,6 +30,7 @@ const Basket = ({ cards, removeFromBasket }: ICards) => {
               image={card.image}
               price={card.price}
               id={card.id}
+              category={card.category}
               count={quantities[card.id] || 1}
               setCount={setCount}
               removeFromBasket={removeFromBasket}

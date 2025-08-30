@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { ICard } from "../../../types";
+import { IProduct } from "../../../types";
 import { useErrorHandler } from "../../../hooks/useErrorHandler";
 
 export const useBasketStorage = () => {
-  const [basketData, setBasketData] = useState<ICard[]>([]);
+  const [basketData, setBasketData] = useState<IProduct[]>([]);
   const [addedItems, setAddedItems] = useState<number[]>([]);
   const { setError, clearError } = useErrorHandler();
 
@@ -37,7 +37,7 @@ export const useBasketStorage = () => {
   };
 
   // Безопасный парсинг JSON
-  const safeJsonParse = (jsonString: string): ICard[] | null => {
+  const safeJsonParse = (jsonString: string): IProduct[] | null => {
     try {
       const parsed = JSON.parse(jsonString);
 
@@ -47,18 +47,19 @@ export const useBasketStorage = () => {
       }
 
       // Проверяем, что каждый элемент имеет необходимые поля
-      const isValidCard = (card: any): card is ICard => {
+      const isValidProduct = (product: any): product is IProduct => {
         return (
-          card &&
-          typeof card.id === "number" &&
-          typeof card.title === "string" &&
-          typeof card.price === "number" &&
-          typeof card.weight === "number" &&
-          typeof card.image === "string"
+          product &&
+          typeof product.id === "number" &&
+          typeof product.title === "string" &&
+          typeof product.price === "number" &&
+          typeof product.weight === "number" &&
+          typeof product.image === "string" &&
+          typeof product.category === "string"
         );
       };
 
-      if (!parsed.every(isValidCard)) {
+      if (!parsed.every(isValidProduct)) {
         throw new Error("Данные корзины содержат неверные элементы");
       }
 
@@ -75,15 +76,15 @@ export const useBasketStorage = () => {
       const parsedBasket = safeJsonParse(savedBasket);
       if (parsedBasket) {
         setBasketData(parsedBasket);
-        setAddedItems(parsedBasket.map((card) => card.id));
+        setAddedItems(parsedBasket.map((product) => product.id));
         clearError(); // Очищаем ошибку при успешной загрузке
       }
     }
   }, [clearError]);
 
-  const addToBasket = (card: ICard) => {
+  const addToBasket = (product: IProduct) => {
     try {
-      const updatedBasket = [...basketData, card];
+      const updatedBasket = [...basketData, product];
       const success = safeLocalStorage.setItem(
         "basket",
         JSON.stringify(updatedBasket)
@@ -91,7 +92,7 @@ export const useBasketStorage = () => {
 
       if (success) {
         setBasketData(updatedBasket);
-        setAddedItems((prev) => [...prev, card.id]);
+        setAddedItems((prev) => [...prev, product.id]);
         clearError(); // Очищаем ошибку при успешном добавлении
       }
     } catch (error) {

@@ -10,14 +10,10 @@ const Card = ({
   price,
   title,
   weight,
+  category,
   isAdded,
   addToBasket,
 }: ICard) => {
-  // Временно добавить для тестирования Error Boundary
-  // if (id === 1) {
-  //   throw new Error('Тестовая ошибка в карточке товара!');
-  // }
-
   return (
     <CardContainer>
       <CardsImageWrapper>
@@ -37,7 +33,7 @@ const Card = ({
         onClick={() =>
           !isAdded &&
           addToBasket &&
-          addToBasket({ id, image, price, title, weight })
+          addToBasket({ id, image, price, title, weight, category })
         }
       >
         {isAdded ? "Добавлено" : "Добавить"}

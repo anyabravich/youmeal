@@ -1,5 +1,8 @@
-export interface IButton {
-  children: React.ReactNode;
+import { ReactNode } from "react";
+
+export interface IButton<T = void> {
+  children: ReactNode;
   className?: string;
-  onClick?: () => void;
+  data?: T;
+  onClick?: (data?: T) => void;
 }

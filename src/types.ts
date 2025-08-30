@@ -1,27 +1,33 @@
-export interface ICard {
+export enum ProductCategory {
+  BURGERS = "Бургеры",
+  SNACKS = "Закуски",
+  HOT_DOGS = "Хот-доги",
+  DRINKS = "Напитки",
+}
+export interface IProduct {
   id: number;
   image: string;
   price: number;
   title: string;
   weight: number;
-  category?: string;
-  count?: number;
-  setCount?: (id: number, count: number) => void;
-  addToBasket?: (cardData: {
-    id: number;
-    image: string;
-    price: number;
-    title: string;
-    weight: number;
-  }) => void;
-  isAdded?: boolean;
-  removeFromBasket?: (id: number) => void;
+  category: ProductCategory;
+}
+
+export interface ICardItem extends IProduct {
+  count: number;
+  setCount: (id: number, count: number) => void;
+  removeFromBasket: (id: number) => void;
+}
+
+export interface ICard extends IProduct {
+  isAdded: boolean;
+  addToBasket: (product: IProduct) => void;
 }
 
 export interface ICards {
   selectedLabel?: string | null;
-  cards: ICard[] | [];
-  addToBasket?: (card: ICard) => void;
+  cards: IProduct[];
+  addToBasket?: (product: IProduct) => void;
   addedItems?: number[];
   removeFromBasket?: (id: number) => void;
 }

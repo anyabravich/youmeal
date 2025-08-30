@@ -30,7 +30,6 @@ const Main = () => {
         />
       </MainInner>
 
-      {/* Отображение ошибок */}
       <ErrorDisplay
         error={error}
         onClose={clearError}
