@@ -4,18 +4,21 @@ import Hero from "./components/Hero";
 import Labels from "./components/Labels";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const App: FC = () => {
   return (
-    <LabelProvider>
-      <Hero />
+    <ErrorBoundary>
+      <LabelProvider>
+        <Hero />
 
-      <Labels />
+        <Labels />
 
-      <Main />
+        <Main />
 
-      <Footer />
-    </LabelProvider>
+        <Footer />
+      </LabelProvider>
+    </ErrorBoundary>
   );
 };
 

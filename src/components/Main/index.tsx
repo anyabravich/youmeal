@@ -8,11 +8,14 @@ import { useLabel } from "../LabelContext";
 import { GOODS } from "../../mock/goods";
 import { breakpoints } from "../../styles/theme";
 import { useBasketStorage } from "./hooks/useBasketStorage";
+import { useErrorHandler } from "../../hooks/useErrorHandler";
+import ErrorDisplay from "../ErrorDisplay";
 
 const Main = () => {
   const { selectedLabel } = useLabel();
   const { basketData, addedItems, addToBasket, removeFromBasket } =
     useBasketStorage();
+  const { error, clearError } = useErrorHandler();
 
   return (
     <MainContainer>
@@ -26,6 +29,14 @@ const Main = () => {
           addedItems={addedItems}
         />
       </MainInner>
+
+      {/* Отображение ошибок */}
+      <ErrorDisplay
+        error={error}
+        onClose={clearError}
+        onRetry={clearError}
+        title="Ошибка работы с корзиной"
+      />
     </MainContainer>
   );
 };

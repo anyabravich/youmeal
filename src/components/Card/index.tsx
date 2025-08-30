@@ -13,6 +13,11 @@ const Card = ({
   isAdded,
   addToBasket,
 }: ICard) => {
+  // Временно добавить для тестирования Error Boundary
+  // if (id === 1) {
+  //   throw new Error('Тестовая ошибка в карточке товара!');
+  // }
+
   return (
     <CardContainer>
       <CardsImageWrapper>

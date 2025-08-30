@@ -2,14 +2,9 @@ import styled from "styled-components";
 
 import { rem } from "polished";
 import { colors } from "../../styles/theme";
+import { IQuantity } from "./types";
 
-interface QuantityProps {
-  count: number;
-  onIncrement: () => void;
-  onDecrement: () => void;
-}
-
-const Quantity = ({ count, onIncrement, onDecrement }: QuantityProps) => {
+const Quantity = ({ count, onIncrement, onDecrement }: IQuantity) => {
   return (
     <QuantityContainer>
       <QuantityButton type="button" onClick={onDecrement}>
