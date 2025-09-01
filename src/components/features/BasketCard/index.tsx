@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 import { rem } from "polished";
-import Quantity from "../../common/Quantity";
+
 import { colors } from "../../../styles/theme";
 import { formatWeight } from "../../../utils/formatWeight";
 import { FC } from "react";
 import { BasketCardProps } from "./types";
+import Quantity from "../../ui/Quantity";
 
 const BasketCard: FC<BasketCardProps> = ({
   id,

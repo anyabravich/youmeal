@@ -6,21 +6,21 @@ import { IQuantity } from "./types";
 
 const Quantity = ({ count, onIncrement, onDecrement }: IQuantity) => {
   return (
-    <QuantityContainer>
-      <QuantityButton type="button" onClick={onDecrement}>
+    <Container>
+      <Button type="button" onClick={onDecrement}>
         -
-      </QuantityButton>
+      </Button>
 
-      <QuantityValue>{count}</QuantityValue>
+      <Value>{count}</Value>
 
-      <QuantityButton type="button" onClick={onIncrement}>
+      <Button type="button" onClick={onIncrement}>
         +
-      </QuantityButton>
-    </QuantityContainer>
+      </Button>
+    </Container>
   );
 };
 
-const QuantityContainer = styled.div`
+const Container = styled.div`
   display: inline-flex;
   align-items: center;
   align-self: center;
@@ -29,7 +29,7 @@ const QuantityContainer = styled.div`
   border-radius: ${rem(12)};
 `;
 
-const QuantityButton = styled.button`
+const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +49,7 @@ const QuantityButton = styled.button`
   }
 `;
 
-const QuantityValue = styled.output`
+const Value = styled.output`
   font-size: ${rem(16)};
 `;
 

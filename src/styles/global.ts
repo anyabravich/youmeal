@@ -90,6 +90,12 @@ export const GlobalStyle = createGlobalStyle`
     line-height: normal;
   }
 
+  .text-small {
+    font-size: ${rem(12)};
+    font-weight: 400;
+    line-height: normal;
+  }
+
   .text-big {
     font-size: ${rem(24)};
     font-weight: 600;

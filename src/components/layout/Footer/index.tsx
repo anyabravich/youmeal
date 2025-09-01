@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Container from "../Container";
 import { rem } from "polished";
 import { breakpoints, colors } from "../../../styles/theme";
-import Icons from "../../common/Icons";
+import Icons from "../../ui/Icons";
 
 const Footer = () => {
   return (
@@ -35,6 +35,7 @@ const Footer = () => {
                   <FooterSocialsItemLink
                     href="https://t.me"
                     target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Telegram"
                   >
                     <Icons.Telegram />
