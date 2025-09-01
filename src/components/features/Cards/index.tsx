@@ -2,11 +2,18 @@ import styled from "styled-components";
 
 import Card from "../../ui/Card";
 import { rem } from "polished";
-import { ICards, IProduct } from "../../../types";
+import { IProduct } from "../../../types";
 import { breakpoints } from "../../../styles/theme";
 import { useFilteredCards } from "./hooks";
+import { ICardsPopup } from "./types";
 
-const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
+const Cards = ({
+  selectedLabel,
+  cards,
+  addToBasket,
+  addedItems,
+  onOpenPopup,
+}: ICardsPopup) => {
   const filteredCards = useFilteredCards(cards, selectedLabel);
 
   return (
@@ -27,6 +34,7 @@ const Cards = ({ selectedLabel, cards, addToBasket, addedItems }: ICards) => {
                 category={card.category}
                 addToBasket={addToBasket || (() => {})}
                 isAdded={addedItems?.includes(card.id) || false}
+                onOpenPopup={onOpenPopup}
               />
             </li>
           ))}

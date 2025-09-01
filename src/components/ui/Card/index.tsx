@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 import { rem } from "polished";
-import { ICard } from "../../../types";
 import { colors } from "../../../styles/theme";
 import Button from "../../ui/Button";
+import { ICardPopup } from "./types";
 
 const Card = ({
   id,
@@ -14,12 +14,13 @@ const Card = ({
   category,
   isAdded,
   addToBasket,
-}: ICard) => {
+  onOpenPopup,
+}: ICardPopup) => {
   return (
     <CardContainer>
-      <CardsImageWrapper>
+      <ImageWrapper onClick={onOpenPopup}>
         <CardImage src={image} alt={title} />
-      </CardsImageWrapper>
+      </ImageWrapper>
 
       <CardPrice className="text-big">{price}₽</CardPrice>
 
@@ -49,7 +50,8 @@ const CardContainer = styled.article`
   background: ${colors.white};
 `;
 
-const CardsImageWrapper = styled.div`
+const ImageWrapper = styled.div`
+  cursor: pointer;
   aspect-ratio: 276 / 220;
   border-radius: ${rem(12)};
   overflow: hidden;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { LabelProvider } from "./components/common/LabelContext";
 import Hero from "./components/features/Hero";
 import Labels from "./components/features/Labels";
@@ -8,15 +8,17 @@ import ErrorBoundary from "./components/common/ErrorBoundary";
 import Popups from "./components/layout/Popups";
 
 const App: FC = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <ErrorBoundary>
       <LabelProvider>
         <Hero />
         <Labels />
-        <Main />
+        <Main onOpenPopup={() => setIsPopupOpen(true)} />
         <Footer />
 
-        <Popups />
+        <Popups isOpened={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
       </LabelProvider>
     </ErrorBoundary>
   );

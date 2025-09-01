@@ -1,14 +1,22 @@
 import styled from "styled-components";
 import { colors } from "../../../styles/theme";
 import { rem } from "polished";
+import { useBodyScrollLock } from "../../../hooks/useBodyScrollLock";
 import Icons from "../../ui/Icons";
 import PopupProduct from "./components/PopupProduct";
+import { useRef } from "react";
+import { IPopups } from "./types";
 
-const Popups = () => {
+const Popups = ({ isOpened, onClose }: IPopups) => {
+  const popupContainerRef = useRef(null);
+  useBodyScrollLock(popupContainerRef, isOpened);
+
+  if (!isOpened) return null;
+
   return (
-    <Container>
-      <Content>
-        <Button type="button">
+    <Container ref={popupContainerRef} onClick={onClose}>
+      <Content onClick={(e) => e.stopPropagation()}>
+        <Button type="button" onClick={onClose}>
           <Icons.Close />
         </Button>
         <PopupProduct />

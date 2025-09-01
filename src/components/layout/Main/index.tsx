@@ -10,8 +10,9 @@ import { useBasketStorage } from "./hooks/useBasketStorage";
 import { useErrorHandler } from "../../../hooks/useErrorHandler";
 import ErrorDisplay from "../../common/ErrorDisplay";
 import { useLabel } from "../../common/LabelContext";
+import { IMain } from "./types";
 
-const Main = () => {
+const Main = ({ onOpenPopup }: IMain) => {
   const { selectedLabel } = useLabel();
   const { basketData, addedItems, addToBasket, removeFromBasket } =
     useBasketStorage();
@@ -27,6 +28,7 @@ const Main = () => {
           selectedLabel={selectedLabel}
           addToBasket={addToBasket}
           addedItems={addedItems}
+          onOpenPopup={onOpenPopup}
         />
       </MainInner>
 
