@@ -10,7 +10,7 @@ import { useBasketStorage } from "./hooks/useBasketStorage";
 import { useErrorHandler } from "../../../hooks/useErrorHandler";
 import ErrorDisplay from "../../common/ErrorDisplay";
 import { useLabel } from "../../common/LabelContext";
-import { IPopupCardData } from "../../../types";
+import { IPopupCardData } from "../Popups/types";
 import { useEffect } from "react";
 
 interface MainProps {

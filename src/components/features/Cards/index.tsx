@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 import Card from "../../ui/Card";
 import { rem } from "polished";
-import { IProduct, IPopupCardData } from "../../../types";
+import { IProduct } from "../../../types";
+import { IPopupCardData } from "../../layout/Popups/types";
 import { breakpoints } from "../../../styles/theme";
 import { useFilteredCards } from "./hooks";
 

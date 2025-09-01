@@ -6,7 +6,7 @@ import Main from "./components/layout/Main";
 import Footer from "./components/layout/Footer";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import Popups from "./components/layout/Popups";
-import { IPopupCardData } from "./types";
+import { IPopupCardData } from "./components/layout/Popups/types";
 import { IBasketData } from "./types/basket";
 
 const App: FC = () => {

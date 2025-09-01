@@ -1,21 +1,11 @@
-import { rem } from "polished";
 import styled from "styled-components";
-import { colors } from "../../../../styles/theme";
-import { IPopupCardData } from "../../../../types";
 
+import { rem } from "polished";
+import { colors } from "../../../../styles/theme";
+import { IPopupProductProps } from "../types";
+import { usePopupProduct } from "../hooks/usePopupProduct";
 import Quantity from "../../../ui/Quantity";
 import Button from "../../../ui/Button";
-import { useState, useEffect } from "react";
-import { IProduct } from "../../../../types";
-
-interface PopupProductProps {
-  cardData?: IPopupCardData;
-  addToBasket?: (product: IProduct, quantity?: number) => void;
-  isAdded?: boolean;
-  onClose?: () => void;
-  currentQuantity?: number;
-  updateQuantity?: (id: number, quantity: number) => void;
-}
 
 const PopupProduct = ({
   cardData,
@@ -24,60 +14,26 @@ const PopupProduct = ({
   onClose,
   currentQuantity = 1,
   updateQuantity,
-}: PopupProductProps) => {
-  const [quantity, setQuantity] = useState(currentQuantity);
-  const [localIsAdded, setLocalIsAdded] = useState(isAdded || false);
-
-  useEffect(() => {
-    setLocalIsAdded(isAdded || false);
-    setQuantity(currentQuantity);
-  }, [isAdded, currentQuantity, cardData?.id]);
+}: IPopupProductProps) => {
+  const {
+    quantity,
+    localIsAdded,
+    totalPrice,
+    handleIncrement,
+    handleDecrement,
+    handleAddToBasket,
+  } = usePopupProduct({
+    cardData,
+    addToBasket,
+    isAdded,
+    onClose,
+    currentQuantity,
+    updateQuantity,
+  });
 
   if (!cardData) {
     return <div>Нет данных о товаре</div>;
   }
-
-  const handleIncrement = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-
-    if (isAdded && updateQuantity) {
-      updateQuantity(cardData.id, newQuantity);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      const newQuantity = quantity - 1;
-      setQuantity(newQuantity);
-
-      if (isAdded && updateQuantity) {
-        updateQuantity(cardData.id, newQuantity);
-      }
-    }
-  };
-
-  const handleAddToBasket = () => {
-    if (addToBasket) {
-      addToBasket(
-        {
-          id: cardData.id,
-          image: cardData.image,
-          price: cardData.price,
-          title: cardData.title,
-          weight: cardData.weight,
-          category: cardData.category,
-        },
-        quantity
-      );
-
-      setLocalIsAdded(true);
-
-      if (onClose) {
-        onClose();
-      }
-    }
-  };
 
   return (
     <Container>
@@ -121,7 +77,7 @@ const PopupProduct = ({
             onDecrement={handleDecrement}
           />
         </Actions>
-        <p className="h3">{cardData.price * quantity}₽</p>
+        <p className="h3">{totalPrice}₽</p>
       </Footer>
     </Container>
   );

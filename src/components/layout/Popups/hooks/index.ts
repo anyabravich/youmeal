@@ -1,0 +1,1 @@
+export { usePopupProduct } from "./usePopupProduct";

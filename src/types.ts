@@ -31,12 +31,3 @@ export interface ICards {
   addedItems?: number[];
   removeFromBasket?: (id: number) => void;
 }
-
-export interface IPopupCardData {
-  id: number;
-  image: string;
-  price: number;
-  title: string;
-  weight: number;
-  category: ProductCategory;
-}
