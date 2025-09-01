@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { IProduct } from "../../../../types";
+import { IBasketItem } from "../../../../types/basket";
 import { useErrorHandler } from "../../../../hooks/useErrorHandler";
 
 export const useBasketStorage = () => {
-  const [basketData, setBasketData] = useState<IProduct[]>([]);
+  const [basketData, setBasketData] = useState<IBasketItem[]>([]);
   const [addedItems, setAddedItems] = useState<number[]>([]);
   const { setError, clearError } = useErrorHandler();
 
@@ -35,7 +36,7 @@ export const useBasketStorage = () => {
     },
   };
 
-  const safeJsonParse = (jsonString: string): IProduct[] | null => {
+  const safeJsonParse = (jsonString: string): IBasketItem[] | null => {
     try {
       const parsed = JSON.parse(jsonString);
 
@@ -43,19 +44,20 @@ export const useBasketStorage = () => {
         throw new Error("Данные корзины имеют неверный формат");
       }
 
-      const isValidProduct = (product: any): product is IProduct => {
+      const isValidBasketItem = (item: any): item is IBasketItem => {
         return (
-          product &&
-          typeof product.id === "number" &&
-          typeof product.title === "string" &&
-          typeof product.price === "number" &&
-          typeof product.weight === "number" &&
-          typeof product.image === "string" &&
-          typeof product.category === "string"
+          item &&
+          typeof item.id === "number" &&
+          typeof item.title === "string" &&
+          typeof item.price === "number" &&
+          typeof item.weight === "number" &&
+          typeof item.image === "string" &&
+          typeof item.category === "string" &&
+          typeof item.quantity === "number"
         );
       };
 
-      if (!parsed.every(isValidProduct)) {
+      if (!parsed.every(isValidBasketItem)) {
         throw new Error("Данные корзины содержат неверные элементы");
       }
 
@@ -78,9 +80,22 @@ export const useBasketStorage = () => {
     }
   }, [clearError]);
 
-  const addToBasket = (product: IProduct) => {
+  const addToBasket = (product: IProduct, quantity: number = 1) => {
     try {
-      const updatedBasket = [...basketData, product];
+      const existingItemIndex = basketData.findIndex(
+        (item) => item.id === product.id
+      );
+
+      let updatedBasket: IBasketItem[];
+
+      if (existingItemIndex !== -1) {
+        updatedBasket = [...basketData];
+        updatedBasket[existingItemIndex].quantity += quantity;
+      } else {
+        const newItem: IBasketItem = { ...product, quantity };
+        updatedBasket = [...basketData, newItem];
+      }
+
       const success = safeLocalStorage.setItem(
         "basket",
         JSON.stringify(updatedBasket)
@@ -114,10 +129,39 @@ export const useBasketStorage = () => {
     }
   };
 
+  const updateQuantity = (id: number, quantity: number) => {
+    try {
+      const updatedBasket = basketData.map((item) => {
+        if (item.id === id) {
+          return { ...item, quantity };
+        }
+        return item;
+      });
+
+      const success = safeLocalStorage.setItem(
+        "basket",
+        JSON.stringify(updatedBasket)
+      );
+
+      if (success) {
+        setBasketData(updatedBasket);
+        clearError();
+      }
+    } catch (error) {
+      setError("Ошибка обновления количества товара", "UPDATE_ERROR", error);
+    }
+  };
+
+  const totalPrice = basketData.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
+
   return {
     basketData,
     addedItems,
     addToBasket,
     removeFromBasket,
+    updateQuantity,
+    totalPrice,
   };
 };

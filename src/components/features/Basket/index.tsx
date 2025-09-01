@@ -3,14 +3,19 @@ import styled from "styled-components";
 import { rem } from "polished";
 import { breakpoints, colors } from "../../../styles/theme";
 import BasketCard from "../BasketCard";
-import { ICards } from "../../../types";
 import { IBasketStyled } from "./types";
 import { useBasket } from "./hooks";
 import Button from "../../ui/Button";
+import { IBasketItem } from "../../../types/basket";
 
-const Basket = ({ cards, removeFromBasket }: ICards) => {
-  const { isOpenBasket, toggleBasket, quantities, setCount, totalPrice } =
-    useBasket(cards);
+interface BasketProps {
+  cards: IBasketItem[];
+  removeFromBasket: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
+}
+
+const Basket = ({ cards, removeFromBasket, updateQuantity }: BasketProps) => {
+  const { isOpenBasket, toggleBasket, totalPrice } = useBasket(cards);
 
   return (
     <Container $isOpen={isOpenBasket} onClick={toggleBasket}>
@@ -31,8 +36,9 @@ const Basket = ({ cards, removeFromBasket }: ICards) => {
               price={card.price}
               id={card.id}
               category={card.category}
-              count={quantities[card.id] || 1}
-              setCount={setCount}
+              quantity={card.quantity}
+              count={card.quantity}
+              updateQuantity={updateQuantity}
               removeFromBasket={removeFromBasket}
             />
           ))}

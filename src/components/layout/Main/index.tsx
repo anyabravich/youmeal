@@ -12,21 +12,36 @@ import ErrorDisplay from "../../common/ErrorDisplay";
 import { useLabel } from "../../common/LabelContext";
 import { IMain } from "./types";
 import { IPopupCardData } from "../../../types";
+import { useEffect } from "react";
 
-const Main = ({
-  onOpenPopup,
-}: {
+interface MainProps {
   onOpenPopup: (data: IPopupCardData) => void;
-}) => {
+  onBasketDataChange: (basketData: any) => void;
+}
+
+const Main = ({ onOpenPopup, onBasketDataChange }: MainProps) => {
   const { selectedLabel } = useLabel();
-  const { basketData, addedItems, addToBasket, removeFromBasket } =
-    useBasketStorage();
+  const {
+    basketData,
+    addedItems,
+    addToBasket,
+    removeFromBasket,
+    updateQuantity,
+  } = useBasketStorage();
   const { error, clearError } = useErrorHandler();
+
+  useEffect(() => {
+    onBasketDataChange({ addToBasket, addedItems, updateQuantity, basketData });
+  }, [addToBasket, addedItems, updateQuantity, basketData, onBasketDataChange]);
 
   return (
     <MainContainer>
       <MainInner>
-        <Basket cards={basketData} removeFromBasket={removeFromBasket} />
+        <Basket
+          cards={basketData}
+          removeFromBasket={removeFromBasket}
+          updateQuantity={updateQuantity}
+        />
 
         <Cards
           cards={GOODS}

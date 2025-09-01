@@ -1,7 +1,7 @@
-import { IProduct } from "../../../types";
+import { IBasketItem } from "../../../types/basket";
 
-export interface BasketCardProps extends IProduct {
+export interface BasketCardProps extends IBasketItem {
   count: number;
-  setCount: (id: number, count: number) => void;
+  updateQuantity: (id: number, count: number) => void;
   removeFromBasket?: (id: number) => void;
 }

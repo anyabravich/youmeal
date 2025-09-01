@@ -15,7 +15,7 @@ const BasketCard: FC<BasketCardProps> = ({
   price,
   image,
   count,
-  setCount,
+  updateQuantity,
   removeFromBasket,
 }) => {
   return (
@@ -34,12 +34,12 @@ const BasketCard: FC<BasketCardProps> = ({
 
       <Quantity
         count={count}
-        onIncrement={() => setCount(id, count + 1)}
+        onIncrement={() => updateQuantity(id, count + 1)}
         onDecrement={() => {
           if (count === 1) {
             removeFromBasket && removeFromBasket(id);
           } else {
-            setCount(id, count - 1);
+            updateQuantity(id, count - 1);
           }
         }}
       />

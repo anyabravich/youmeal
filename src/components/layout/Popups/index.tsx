@@ -8,7 +8,15 @@ import PopupProduct from "./components/PopupProduct";
 import { useRef } from "react";
 import { IPopups } from "./types";
 
-const Popups = ({ isOpened, onClose, cardData }: IPopups) => {
+const Popups = ({
+  isOpened,
+  onClose,
+  cardData,
+  addToBasket,
+  isAdded,
+  currentQuantity,
+  updateQuantity,
+}: IPopups) => {
   const popupContainerRef = useRef(null);
 
   useBodyScrollLock(popupContainerRef, isOpened);
@@ -22,7 +30,14 @@ const Popups = ({ isOpened, onClose, cardData }: IPopups) => {
         <Button type="button" onClick={onClose}>
           <Icons.Close />
         </Button>
-        <PopupProduct cardData={cardData} />
+        <PopupProduct
+          cardData={cardData}
+          addToBasket={addToBasket}
+          isAdded={isAdded}
+          onClose={onClose}
+          currentQuantity={currentQuantity}
+          updateQuantity={updateQuantity}
+        />
       </Content>
     </Container>
   );

@@ -1,3 +1,6 @@
+import { IBasketData } from "../../../types/basket";
+
 export interface IMain {
-  onOpenPopup: () => void;
+  onOpenPopup: (data: any) => void;
+  onBasketDataChange: (basketData: IBasketData) => void;
 }
