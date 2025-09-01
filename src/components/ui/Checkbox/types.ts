@@ -1,10 +1,10 @@
 import { ChangeEvent, InputHTMLAttributes } from "react";
 
-export interface IInput
+export interface ICheckbox
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   label?: string;
-  error?: string;
-  onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void;
+  checked?: boolean;
+  onChange?: (checked: boolean, event: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
+  disabled?: boolean;
 }
-

@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import { colors } from "../../../../styles/theme";
 import { rem } from "polished";
-import { IPopupDeliveryProps } from "../types";
-import { hideScrollbars } from "../../../../styles/utils";
 import Input from "../../../ui/Input";
+import Radio from "../../../ui/Radio";
+import { useState } from "react";
+import Button from "../../../ui/Button";
 
-const PopupDelivery = ({ onClose }: IPopupDeliveryProps) => {
+const PopupDelivery = () => {
+  const [deliveryType, setDeliveryType] = useState("pickup");
+
   return (
     <Container>
       <ImageWrapper>
@@ -18,6 +20,30 @@ const PopupDelivery = ({ onClose }: IPopupDeliveryProps) => {
             <Input placeholder="Ваше имя" />
             <Input placeholder="Телефон" />
           </Inputs>
+          <RadioGroup>
+            <Radio
+              label="Самовывоз"
+              name="delivery"
+              value="pickup"
+              checked={deliveryType === "pickup"}
+              onChange={(value) => setDeliveryType(value)}
+            />
+            <Radio
+              label="Доставка"
+              name="delivery"
+              value="delivery"
+              checked={deliveryType === "delivery"}
+              onChange={(value) => setDeliveryType(value)}
+            />
+          </RadioGroup>
+          <Inputs>
+            <Input placeholder="Улица, дом, квартира" />
+            <FloorIntercomGrid>
+              <Input placeholder="Этаж" />
+              <Input placeholder="Домофон" />
+            </FloorIntercomGrid>
+          </Inputs>
+          <ButtonAction>Оформить</ButtonAction>
         </FormSection>
       </Content>
     </Container>
@@ -37,6 +63,7 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 `;
 
 const Title = styled.h3`
@@ -57,6 +84,24 @@ const Inputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${rem(8)};
+  margin-bottom: ${rem(10)};
+`;
+
+const RadioGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${rem(12)};
+  margin-bottom: ${rem(16)};
+`;
+
+const FloorIntercomGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: ${rem(8)};
+`;
+
+const ButtonAction = styled(Button)`
+  width: 100%;
 `;
 
 export default PopupDelivery;

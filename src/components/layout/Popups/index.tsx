@@ -41,7 +41,7 @@ const Popups = ({
           />
         );
       case PopupType.DELIVERY:
-        return <PopupDelivery onClose={onClose} />;
+        return <PopupDelivery />;
       default:
         return null;
     }

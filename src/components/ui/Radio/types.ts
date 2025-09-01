@@ -1,10 +1,13 @@
 import { ChangeEvent, InputHTMLAttributes } from "react";
 
-export interface IInput
+export interface IRadio
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
   label?: string;
-  error?: string;
+  checked?: boolean;
   onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
+  value?: string;
   className?: string;
+  disabled?: boolean;
 }
 

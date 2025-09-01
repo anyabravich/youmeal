@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { IProduct } from "../../../../types";
 import { IBasketItem } from "../../../../types/basket";
 import { useErrorHandler } from "../../../../hooks/useErrorHandler";
@@ -80,77 +80,86 @@ export const useBasketStorage = () => {
     }
   }, [clearError]);
 
-  const addToBasket = (product: IProduct, quantity: number = 1) => {
-    try {
-      const existingItemIndex = basketData.findIndex(
-        (item) => item.id === product.id
-      );
+  const addToBasket = useCallback(
+    (product: IProduct, quantity: number = 1) => {
+      try {
+        const existingItemIndex = basketData.findIndex(
+          (item) => item.id === product.id
+        );
 
-      let updatedBasket: IBasketItem[];
+        let updatedBasket: IBasketItem[];
 
-      if (existingItemIndex !== -1) {
-        updatedBasket = [...basketData];
-        updatedBasket[existingItemIndex].quantity += quantity;
-      } else {
-        const newItem: IBasketItem = { ...product, quantity };
-        updatedBasket = [...basketData, newItem];
-      }
-
-      const success = safeLocalStorage.setItem(
-        "basket",
-        JSON.stringify(updatedBasket)
-      );
-
-      if (success) {
-        setBasketData(updatedBasket);
-        setAddedItems((prev) => [...prev, product.id]);
-        clearError();
-      }
-    } catch (error) {
-      setError("Ошибка добавления товара в корзину", "ADD_ERROR", error);
-    }
-  };
-
-  const removeFromBasket = (id: number) => {
-    try {
-      const updatedBasket = basketData.filter((item) => item.id !== id);
-      const success = safeLocalStorage.setItem(
-        "basket",
-        JSON.stringify(updatedBasket)
-      );
-
-      if (success) {
-        setBasketData(updatedBasket);
-        setAddedItems((prev) => prev.filter((itemId) => itemId !== id));
-        clearError();
-      }
-    } catch (error) {
-      setError("Ошибка удаления товара из корзины", "REMOVE_ERROR", error);
-    }
-  };
-
-  const updateQuantity = (id: number, quantity: number) => {
-    try {
-      const updatedBasket = basketData.map((item) => {
-        if (item.id === id) {
-          return { ...item, quantity };
+        if (existingItemIndex !== -1) {
+          updatedBasket = [...basketData];
+          updatedBasket[existingItemIndex].quantity += quantity;
+        } else {
+          const newItem: IBasketItem = { ...product, quantity };
+          updatedBasket = [...basketData, newItem];
         }
-        return item;
-      });
 
-      const success = safeLocalStorage.setItem(
-        "basket",
-        JSON.stringify(updatedBasket)
-      );
+        const success = safeLocalStorage.setItem(
+          "basket",
+          JSON.stringify(updatedBasket)
+        );
 
-      if (success) {
-        setBasketData(updatedBasket);
-        clearError();
+        if (success) {
+          setBasketData(updatedBasket);
+          setAddedItems((prev) => [...prev, product.id]);
+          clearError();
+        }
+      } catch (error) {
+        setError("Ошибка добавления товара в корзину", "ADD_ERROR", error);
       }
-    } catch (error) {
-      setError("Ошибка обновления количества товара", "UPDATE_ERROR", error);
-    }
-  };
+    },
+    [basketData, clearError, setError]
+  );
+
+  const removeFromBasket = useCallback(
+    (id: number) => {
+      try {
+        const updatedBasket = basketData.filter((item) => item.id !== id);
+        const success = safeLocalStorage.setItem(
+          "basket",
+          JSON.stringify(updatedBasket)
+        );
+
+        if (success) {
+          setBasketData(updatedBasket);
+          setAddedItems((prev) => prev.filter((itemId) => itemId !== id));
+          clearError();
+        }
+      } catch (error) {
+        setError("Ошибка удаления товара из корзины", "REMOVE_ERROR", error);
+      }
+    },
+    [basketData, clearError, setError]
+  );
+
+  const updateQuantity = useCallback(
+    (id: number, quantity: number) => {
+      try {
+        const updatedBasket = basketData.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity };
+          }
+          return item;
+        });
+
+        const success = safeLocalStorage.setItem(
+          "basket",
+          JSON.stringify(updatedBasket)
+        );
+
+        if (success) {
+          setBasketData(updatedBasket);
+          clearError();
+        }
+      } catch (error) {
+        setError("Ошибка обновления количества товара", "UPDATE_ERROR", error);
+      }
+    },
+    [basketData, clearError, setError]
+  );
 
   const totalPrice = basketData.reduce((total, item) => {
     return total + item.price * item.quantity;

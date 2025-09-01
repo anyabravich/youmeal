@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useCallback } from "react";
 import { LabelProvider } from "./components/common/LabelContext";
 import Hero from "./components/features/Hero";
 import Labels from "./components/features/Labels";
@@ -33,9 +33,9 @@ const App: FC = () => {
     setCardData(undefined);
   };
 
-  const handleBasketDataChange = (data: IBasketData) => {
+  const handleBasketDataChange = useCallback((data: IBasketData) => {
     setBasketData(data);
-  };
+  }, []);
 
   return (
     <ErrorBoundary>
