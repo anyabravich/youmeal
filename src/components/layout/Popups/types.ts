@@ -1,5 +1,10 @@
 import { IProduct, ProductCategory } from "../../../types";
 
+export enum PopupType {
+  PRODUCT = "product",
+  DELIVERY = "delivery",
+}
+
 export interface IPopupCardData {
   id: number;
   image: string;
@@ -18,9 +23,14 @@ export interface IPopupProductProps {
   updateQuantity?: (id: number, quantity: number) => void;
 }
 
+export interface IPopupDeliveryProps {
+  onClose?: () => void;
+}
+
 export interface IPopups {
   isOpened: boolean;
   onClose: () => void;
+  popupType: PopupType;
   cardData?: IPopupCardData;
   addToBasket?: (product: IProduct, quantity?: number) => void;
   isAdded?: boolean;

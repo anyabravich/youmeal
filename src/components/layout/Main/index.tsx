@@ -15,10 +15,15 @@ import { useEffect } from "react";
 
 interface MainProps {
   onOpenPopup: (data: IPopupCardData) => void;
+  onOpenDeliveryPopup: () => void;
   onBasketDataChange: (basketData: any) => void;
 }
 
-const Main = ({ onOpenPopup, onBasketDataChange }: MainProps) => {
+const Main = ({
+  onOpenPopup,
+  onOpenDeliveryPopup,
+  onBasketDataChange,
+}: MainProps) => {
   const { selectedLabel } = useLabel();
   const {
     basketData,
@@ -40,6 +45,7 @@ const Main = ({ onOpenPopup, onBasketDataChange }: MainProps) => {
           cards={basketData}
           removeFromBasket={removeFromBasket}
           updateQuantity={updateQuantity}
+          onOpenDeliveryPopup={onOpenDeliveryPopup}
         />
 
         <Cards

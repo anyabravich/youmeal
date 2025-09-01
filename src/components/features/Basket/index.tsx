@@ -7,14 +7,21 @@ import { IBasketStyled } from "./types";
 import { useBasket } from "./hooks";
 import Button from "../../ui/Button";
 import { IBasketItem } from "../../../types/basket";
+import Popups from "../../layout/Popups";
 
 interface BasketProps {
   cards: IBasketItem[];
   removeFromBasket: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
+  onOpenDeliveryPopup: () => void;
 }
 
-const Basket = ({ cards, removeFromBasket, updateQuantity }: BasketProps) => {
+const Basket = ({
+  cards,
+  removeFromBasket,
+  updateQuantity,
+  onOpenDeliveryPopup,
+}: BasketProps) => {
   const { isOpenBasket, toggleBasket, totalPrice } = useBasket(cards);
 
   return (
@@ -48,7 +55,9 @@ const Basket = ({ cards, removeFromBasket, updateQuantity }: BasketProps) => {
             <p>{totalPrice}₽</p>
           </BasketTotal>
 
-          <BasketButton className="_orange">Оформить заказ</BasketButton>
+          <BasketButton className="_orange" onClick={onOpenDeliveryPopup}>
+            Оформить заказ
+          </BasketButton>
 
           <BasketDelivery>
             <BasketDeliveryImage src="/images/delivery.svg" alt="Доставка" />

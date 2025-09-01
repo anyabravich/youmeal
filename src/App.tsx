@@ -6,11 +6,12 @@ import Main from "./components/layout/Main";
 import Footer from "./components/layout/Footer";
 import ErrorBoundary from "./components/common/ErrorBoundary";
 import Popups from "./components/layout/Popups";
-import { IPopupCardData } from "./components/layout/Popups/types";
+import { IPopupCardData, PopupType } from "./components/layout/Popups/types";
 import { IBasketData } from "./types/basket";
 
 const App: FC = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupType, setPopupType] = useState<PopupType>(PopupType.PRODUCT);
   const [cardData, setCardData] = useState<IPopupCardData | undefined>(
     undefined
   );
@@ -18,6 +19,12 @@ const App: FC = () => {
 
   const handleOpenPopup = (data: IPopupCardData) => {
     setCardData(data);
+    setPopupType(PopupType.PRODUCT);
+    setIsPopupOpen(true);
+  };
+
+  const handleOpenDeliveryPopup = () => {
+    setPopupType(PopupType.DELIVERY);
     setIsPopupOpen(true);
   };
 
@@ -37,6 +44,7 @@ const App: FC = () => {
         <Labels />
         <Main
           onOpenPopup={handleOpenPopup}
+          onOpenDeliveryPopup={handleOpenDeliveryPopup}
           onBasketDataChange={handleBasketDataChange}
         />
         <Footer />
@@ -44,6 +52,7 @@ const App: FC = () => {
         <Popups
           isOpened={isPopupOpen}
           onClose={handleClosePopup}
+          popupType={popupType}
           cardData={cardData}
           addToBasket={basketData?.addToBasket}
           isAdded={

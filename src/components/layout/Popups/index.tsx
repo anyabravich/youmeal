@@ -6,11 +6,13 @@ import { useEscapeKey } from "../../../hooks/useEscapeKey";
 import Icons from "../../ui/Icons";
 import PopupProduct from "./components/PopupProduct";
 import { useRef } from "react";
-import { IPopups } from "./types";
+import { IPopups, PopupType } from "./types";
+import PopupDelivery from "./components/PopupDelivery";
 
 const Popups = ({
   isOpened,
   onClose,
+  popupType,
   cardData,
   addToBasket,
   isAdded,
@@ -24,20 +26,33 @@ const Popups = ({
 
   if (!isOpened) return null;
 
+  const renderPopupContent = () => {
+    switch (popupType) {
+      case PopupType.PRODUCT:
+        return (
+          <PopupProduct
+            cardData={cardData}
+            addToBasket={addToBasket}
+            isAdded={isAdded}
+            onClose={onClose}
+            currentQuantity={currentQuantity}
+            updateQuantity={updateQuantity}
+          />
+        );
+      case PopupType.DELIVERY:
+        return <PopupDelivery onClose={onClose} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <Container ref={popupContainerRef} onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>
         <Button type="button" onClick={onClose}>
           <Icons.Close />
         </Button>
-        <PopupProduct
-          cardData={cardData}
-          addToBasket={addToBasket}
-          isAdded={isAdded}
-          onClose={onClose}
-          currentQuantity={currentQuantity}
-          updateQuantity={updateQuantity}
-        />
+        {renderPopupContent()}
       </Content>
     </Container>
   );
