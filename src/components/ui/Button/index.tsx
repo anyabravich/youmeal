@@ -25,13 +25,12 @@ const Container = styled.button`
   font-size: ${rem(16)};
   border-radius: ${rem(12)};
   background: ${colors.gray};
-  transition: all 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
   color: ${colors.black};
 
   &:hover {
     background: ${colors.lightOrange};
     color: ${colors.white};
-    transition: all 0.3s ease-in-out;
   }
 
   &._orange {

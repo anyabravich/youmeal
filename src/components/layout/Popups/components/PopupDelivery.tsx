@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../../../styles/theme";
 import { rem } from "polished";
 import { IPopupDeliveryProps } from "../types";
+import { hideScrollbars } from "../../../../styles/utils";
 
 const PopupDelivery = ({ onClose }: IPopupDeliveryProps) => {
   return (
@@ -51,6 +52,9 @@ const Container = styled.div`
   padding: ${rem(40)} ${rem(24)};
   max-width: ${rem(500)};
   margin: 0 auto;
+  max-height: ${rem(600)};
+  overflow-y: auto;
+  ${hideScrollbars}
 `;
 
 const Title = styled.h2`

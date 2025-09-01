@@ -8,6 +8,7 @@ import PopupProduct from "./components/PopupProduct";
 import { useRef } from "react";
 import { IPopups, PopupType } from "./types";
 import PopupDelivery from "./components/PopupDelivery";
+import { hideScrollbars } from "../../../styles/utils";
 
 const Popups = ({
   isOpened,
@@ -66,7 +67,7 @@ export const Container = styled.div`
   height: 100%;
   z-index: 100;
   background: rgba(0, 0, 0, 0.8);
-  padding-top: ${rem(150)};
+  padding-block: ${rem(150)};
 
   display: flex;
   align-items: flex-start;
@@ -77,8 +78,12 @@ export const Content = styled.div`
   position: relative;
   flex-grow: 1;
   max-width: ${rem(684)};
+  height: auto;
+  max-height: calc(100vh - ${rem(100)} * 2);
   background: ${colors.white};
   border-radius: ${rem(24)};
+  overflow-y: auto;
+  ${hideScrollbars}
 `;
 
 export const Button = styled.button`
