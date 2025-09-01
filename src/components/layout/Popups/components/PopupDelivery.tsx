@@ -43,7 +43,7 @@ const PopupDelivery = () => {
               <Input placeholder="Домофон" />
             </FloorIntercomGrid>
           </Inputs>
-          <ButtonAction>Оформить</ButtonAction>
+          <ButtonAction state="primary">Оформить</ButtonAction>
         </FormSection>
       </Content>
     </Container>

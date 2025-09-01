@@ -66,7 +66,7 @@ const PopupProduct = ({
       <Footer>
         <Actions>
           <ButtonAction
-            className={localIsAdded ? "_orange _added" : ""}
+            state={localIsAdded ? "primary secondary" : undefined}
             onClick={handleAddToBasket}
           >
             {localIsAdded ? "Добавлено" : "Добавить"}

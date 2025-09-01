@@ -7,7 +7,6 @@ import { IBasketStyled } from "./types";
 import { useBasket } from "./hooks";
 import Button from "../../ui/Button";
 import { IBasketItem } from "../../../types/basket";
-import Popups from "../../layout/Popups";
 
 interface BasketProps {
   cards: IBasketItem[];
@@ -55,7 +54,7 @@ const Basket = ({
             <p>{totalPrice}₽</p>
           </BasketTotal>
 
-          <BasketButton className="_orange" onClick={onOpenDeliveryPopup}>
+          <BasketButton state="primary" onClick={onOpenDeliveryPopup}>
             Оформить заказ
           </BasketButton>
 

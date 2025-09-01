@@ -4,10 +4,10 @@ import { rem } from "polished";
 import { IButton } from "./types";
 import { colors } from "../../../styles/theme";
 
-const Button = ({ children, className, data, onClick }: IButton) => {
+const Button = ({ children, className, state, data, onClick }: IButton) => {
   return (
     <Container
-      className={`button ${className}`}
+      className={`button ${className || ""} ${state || ""}`}
       onClick={() => onClick?.(data)}
       type="button"
     >
@@ -33,7 +33,7 @@ const Container = styled.button`
     color: ${colors.white};
   }
 
-  &._orange {
+  &.primary {
     background: ${colors.orange};
     color: ${colors.white};
 
@@ -47,7 +47,7 @@ const Container = styled.button`
     opacity: 0.2;
   }
 
-  &._added {
+  &.secondary {
     pointer-events: none;
   }
 `;

@@ -31,7 +31,7 @@ const Card = ({
       </CardWeight>
 
       <Button
-        className={isAdded ? "_orange _added" : ""}
+        state={isAdded ? "primary secondary" : undefined}
         onClick={() =>
           !isAdded &&
           addToBasket &&
