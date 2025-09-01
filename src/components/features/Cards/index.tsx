@@ -5,7 +5,6 @@ import { rem } from "polished";
 import { IProduct, IPopupCardData } from "../../../types";
 import { breakpoints } from "../../../styles/theme";
 import { useFilteredCards } from "./hooks";
-import { ICardsPopup } from "./types";
 
 const Cards = ({
   selectedLabel,
