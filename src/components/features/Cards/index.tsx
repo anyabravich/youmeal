@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import Card from "../../ui/Card";
 import { rem } from "polished";
-import { IProduct } from "../../../types";
+import { IProduct, IPopupCardData } from "../../../types";
 import { breakpoints } from "../../../styles/theme";
 import { useFilteredCards } from "./hooks";
 import { ICardsPopup } from "./types";
@@ -13,7 +13,13 @@ const Cards = ({
   addToBasket,
   addedItems,
   onOpenPopup,
-}: ICardsPopup) => {
+}: {
+  selectedLabel?: string | null;
+  cards: IProduct[];
+  addToBasket?: (product: IProduct) => void;
+  addedItems?: number[];
+  onOpenPopup: (data: IPopupCardData) => void;
+}) => {
   const filteredCards = useFilteredCards(cards, selectedLabel);
 
   return (
@@ -34,7 +40,16 @@ const Cards = ({
                 category={card.category}
                 addToBasket={addToBasket || (() => {})}
                 isAdded={addedItems?.includes(card.id) || false}
-                onOpenPopup={onOpenPopup}
+                onOpenPopup={() =>
+                  onOpenPopup({
+                    id: card.id,
+                    image: card.image,
+                    price: card.price,
+                    title: card.title,
+                    weight: card.weight,
+                    category: card.category,
+                  })
+                }
               />
             </li>
           ))}

@@ -7,7 +7,6 @@ export const useBasketStorage = () => {
   const [addedItems, setAddedItems] = useState<number[]>([]);
   const { setError, clearError } = useErrorHandler();
 
-  // Безопасная работа с localStorage
   const safeLocalStorage = {
     getItem: (key: string): string | null => {
       try {
@@ -36,17 +35,14 @@ export const useBasketStorage = () => {
     },
   };
 
-  // Безопасный парсинг JSON
   const safeJsonParse = (jsonString: string): IProduct[] | null => {
     try {
       const parsed = JSON.parse(jsonString);
 
-      // Валидация структуры данных
       if (!Array.isArray(parsed)) {
         throw new Error("Данные корзины имеют неверный формат");
       }
 
-      // Проверяем, что каждый элемент имеет необходимые поля
       const isValidProduct = (product: any): product is IProduct => {
         return (
           product &&
@@ -77,7 +73,7 @@ export const useBasketStorage = () => {
       if (parsedBasket) {
         setBasketData(parsedBasket);
         setAddedItems(parsedBasket.map((product) => product.id));
-        clearError(); // Очищаем ошибку при успешной загрузке
+        clearError();
       }
     }
   }, [clearError]);
@@ -93,7 +89,7 @@ export const useBasketStorage = () => {
       if (success) {
         setBasketData(updatedBasket);
         setAddedItems((prev) => [...prev, product.id]);
-        clearError(); // Очищаем ошибку при успешном добавлении
+        clearError();
       }
     } catch (error) {
       setError("Ошибка добавления товара в корзину", "ADD_ERROR", error);
@@ -111,7 +107,7 @@ export const useBasketStorage = () => {
       if (success) {
         setBasketData(updatedBasket);
         setAddedItems((prev) => prev.filter((itemId) => itemId !== id));
-        clearError(); // Очищаем ошибку при успешном удалении
+        clearError();
       }
     } catch (error) {
       setError("Ошибка удаления товара из корзины", "REMOVE_ERROR", error);

@@ -29,7 +29,6 @@ export const useErrorHandler = (): UseErrorHandlerReturn => {
         details,
       });
 
-      // Логируем ошибку для разработчиков
       console.error("Error occurred:", { message, code, details });
     },
     []

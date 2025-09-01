@@ -11,8 +11,13 @@ import { useErrorHandler } from "../../../hooks/useErrorHandler";
 import ErrorDisplay from "../../common/ErrorDisplay";
 import { useLabel } from "../../common/LabelContext";
 import { IMain } from "./types";
+import { IPopupCardData } from "../../../types";
 
-const Main = ({ onOpenPopup }: IMain) => {
+const Main = ({
+  onOpenPopup,
+}: {
+  onOpenPopup: (data: IPopupCardData) => void;
+}) => {
   const { selectedLabel } = useLabel();
   const { basketData, addedItems, addToBasket, removeFromBasket } =
     useBasketStorage();

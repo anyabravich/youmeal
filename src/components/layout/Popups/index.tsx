@@ -2,14 +2,17 @@ import styled from "styled-components";
 import { colors } from "../../../styles/theme";
 import { rem } from "polished";
 import { useBodyScrollLock } from "../../../hooks/useBodyScrollLock";
+import { useEscapeKey } from "../../../hooks/useEscapeKey";
 import Icons from "../../ui/Icons";
 import PopupProduct from "./components/PopupProduct";
 import { useRef } from "react";
 import { IPopups } from "./types";
 
-const Popups = ({ isOpened, onClose }: IPopups) => {
+const Popups = ({ isOpened, onClose, cardData }: IPopups) => {
   const popupContainerRef = useRef(null);
+
   useBodyScrollLock(popupContainerRef, isOpened);
+  useEscapeKey(onClose, isOpened);
 
   if (!isOpened) return null;
 
@@ -19,7 +22,7 @@ const Popups = ({ isOpened, onClose }: IPopups) => {
         <Button type="button" onClick={onClose}>
           <Icons.Close />
         </Button>
-        <PopupProduct />
+        <PopupProduct cardData={cardData} />
       </Content>
     </Container>
   );

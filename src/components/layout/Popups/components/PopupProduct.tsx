@@ -1,18 +1,23 @@
 import { rem } from "polished";
 import styled from "styled-components";
 import { colors } from "../../../../styles/theme";
+import { IPopupCardData } from "../../../../types";
 
 import Quantity from "../../../ui/Quantity";
 import Button from "../../../ui/Button";
 
-const PopupProduct = () => {
+const PopupProduct = ({ cardData }: { cardData?: IPopupCardData }) => {
+  if (!cardData) {
+    return <div>Нет данных о товаре</div>;
+  }
+
   return (
     <Container>
-      <Title className="h2">Мясная бомба</Title>
+      <Title className="h2">{cardData.title}</Title>
 
       <Content>
         <ImageWrapper>
-          <Image src="/images/cards/card-1.jpg" alt="Мясная бомба" />
+          <Image src={cardData.image} alt={cardData.title} />
         </ImageWrapper>
         <div>
           <Text className="text">
@@ -29,7 +34,7 @@ const PopupProduct = () => {
               <li>Листья салата</li>
               <li>Соус горчичный</li>
             </Compound>
-            <Weight>520г, ккал 430</Weight>
+            <Weight>{cardData.weight}г, ккал 430</Weight>
           </div>
         </div>
       </Content>
@@ -39,7 +44,7 @@ const PopupProduct = () => {
           <ButtonAction>Добавить</ButtonAction>
           <Quantity count={1} onIncrement={() => {}} onDecrement={() => {}} />
         </Actions>
-        <p className="h3">689₽</p>
+        <p className="h3">{cardData.price}₽</p>
       </Footer>
     </Container>
   );

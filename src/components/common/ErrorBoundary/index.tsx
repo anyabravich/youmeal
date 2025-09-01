@@ -20,17 +20,13 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   static getDerivedStateFromError(error: Error): State {
-    // Обновляем состояние при ошибке
     return { hasError: true, error };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Логируем ошибку для разработчиков
     console.error("Error caught by boundary:", error, errorInfo);
 
-    // В продакшене можно отправить ошибку в сервис аналитики
     if (import.meta.env.MODE === "production") {
-      // Пример: отправка в Sentry, LogRocket и т.д.
       console.log("Error would be sent to error tracking service");
     }
   }
@@ -45,7 +41,6 @@ class ErrorBoundary extends Component<Props, State> {
 
   render() {
     if (this.state.hasError) {
-      // Fallback UI при ошибке
       return (
         <ErrorContainer>
           <ErrorContent>
