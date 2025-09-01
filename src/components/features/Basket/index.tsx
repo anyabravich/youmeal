@@ -7,6 +7,8 @@ import { IBasketStyled } from "./types";
 import { useBasket } from "./hooks";
 import Button from "../../ui/Button";
 import { IBasketItem } from "../../../types/basket";
+import { useEscapeKey } from "../../../hooks/useEscapeKey";
+import { useEffect, useRef } from "react";
 
 interface BasketProps {
   cards: IBasketItem[];
@@ -22,10 +24,44 @@ const Basket = ({
   onOpenDeliveryPopup,
 }: BasketProps) => {
   const { isOpenBasket, toggleBasket, totalPrice } = useBasket(cards);
+  const basketRef = useRef<HTMLElement>(null);
+
+  const handleContainerClick = (e: React.MouseEvent) => {
+    if (
+      e.target === e.currentTarget ||
+      (e.target as Element).closest(".basket-title")
+    ) {
+      toggleBasket();
+    }
+  };
+
+  const handleOpenDeliveryPopup = () => {
+    onOpenDeliveryPopup();
+  };
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (basketRef.current && !basketRef.current.contains(e.target as Node)) {
+      toggleBasket();
+    }
+  };
+
+  useEffect(() => {
+    if (isOpenBasket) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () =>
+        document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isOpenBasket]);
+
+  useEscapeKey(toggleBasket, isOpenBasket);
 
   return (
-    <Container $isOpen={isOpenBasket} onClick={toggleBasket}>
-      <Title className="h3">
+    <Container
+      ref={basketRef}
+      $isOpen={isOpenBasket}
+      onClick={handleContainerClick}
+    >
+      <Title className="h3 basket-title">
         <span>Корзина</span>
 
         <Count>{cards.length}</Count>
@@ -54,7 +90,11 @@ const Basket = ({
             <p>{totalPrice}₽</p>
           </BasketTotal>
 
-          <BasketButton state="primary" onClick={onOpenDeliveryPopup}>
+          <BasketButton
+            state="primary"
+            onClick={handleOpenDeliveryPopup}
+            data={undefined}
+          >
             Оформить заказ
           </BasketButton>
 

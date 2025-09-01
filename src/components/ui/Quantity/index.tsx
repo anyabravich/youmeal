@@ -5,15 +5,20 @@ import { colors } from "../../../styles/theme";
 import { IQuantity } from "./types";
 
 const Quantity = ({ count, onIncrement, onDecrement }: IQuantity) => {
+  const handleButtonClick = (e: React.MouseEvent, callback: () => void) => {
+    e.stopPropagation();
+    callback();
+  };
+
   return (
     <Container>
-      <Button type="button" onClick={onDecrement}>
+      <Button type="button" onClick={(e) => handleButtonClick(e, onDecrement)}>
         -
       </Button>
 
       <Value>{count}</Value>
 
-      <Button type="button" onClick={onIncrement}>
+      <Button type="button" onClick={(e) => handleButtonClick(e, onIncrement)}>
         +
       </Button>
     </Container>

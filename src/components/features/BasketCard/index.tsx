@@ -18,8 +18,11 @@ const BasketCard: FC<BasketCardProps> = ({
   updateQuantity,
   removeFromBasket,
 }) => {
+  const handleCardClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
   return (
-    <Container>
+    <Container onClick={handleCardClick}>
       <ImageContainer>
         <Image src={image} alt="Картинка товара" />
       </ImageContainer>
