@@ -20,7 +20,7 @@ const ContainerWrapper = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}px) {
-    --container-padding: ${rem(10)};
+    --container-padding: ${rem(64)};
   }
 `;
 

@@ -39,10 +39,7 @@ const Wrapper = styled.section`
 
   @media (max-width: ${breakpoints.tablet}px) {
     min-height: ${rem(349)};
-  }
-
-  @media (max-width: ${breakpoints.tablet}px) {
-    min-height: auto;
+    margin-bottom: ${rem(30)};
   }
 `;
 
@@ -54,6 +51,11 @@ const Inner = styled.div`
 
   @media (max-width: ${breakpoints.laptop}px) {
     grid-template-columns: ${rem(306)} minmax(auto, ${rem(437)});
+  }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    gap: ${rem(10)};
+    grid-template-columns: ${rem(227)} minmax(auto, ${rem(325)});
   }
 
   @media (max-width: ${breakpoints.mobile}px) {
@@ -82,6 +84,10 @@ const Image = styled.img`
 
 const Texts = styled.div`
   margin-top: ${rem(40)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    margin-top: ${rem(22)};
+  }
 `;
 
 const Title = styled.h1`
@@ -92,11 +98,20 @@ const Title = styled.h1`
   span {
     color: ${colors.darkOrange};
   }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    max-width: ${rem(325)};
+    margin-bottom: ${rem(30)};
+  }
 `;
 
 const Text = styled.p`
   span {
     font-weight: 600;
+  }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    font-size: ${rem(12)};
   }
 `;
 

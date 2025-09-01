@@ -64,7 +64,7 @@ const Basket = ({
           </BasketDelivery>
         </ContainerMobile>
       ) : (
-        <p>Тут пока пусто :(</p>
+        <EmptyText>Тут пока пусто :(</EmptyText>
       )}
     </Container>
   );
@@ -82,6 +82,7 @@ const Container = styled.aside<IBasketStyled>`
     position: absolute;
     top: 0;
     margin-top: 0;
+    padding: ${rem(16)} ${rem(10)};
 
     ${({ $isOpen }) =>
       $isOpen &&
@@ -109,6 +110,8 @@ const Title = styled.h3`
 
   @media (max-width: ${breakpoints.tablet}px) {
     margin-bottom: 0;
+    font-size: ${rem(16)};
+    gap: ${rem(27)};
   }
 `;
 
@@ -118,6 +121,11 @@ const Count = styled.span`
   line-height: normal;
   background: ${colors.gray};
   border-radius: ${rem(6)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    padding: ${rem(1)} ${rem(13)};
+    font-size: ${rem(10)};
+  }
 `;
 
 const BasketTotal = styled.div`
@@ -144,6 +152,14 @@ const BasketDeliveryImage = styled.img`
 
   width: var(--size);
   height: var(--size);
+`;
+
+const EmptyText = styled.p`
+  text-align: center;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    display: none;
+  }
 `;
 
 export default Basket;

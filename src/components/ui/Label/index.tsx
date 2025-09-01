@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { rem } from "polished";
-import { colors } from "../../../styles/theme";
+import { breakpoints, colors } from "../../../styles/theme";
 import { ILabel } from "./types";
 
 const Label = ({ icon, text, isActive, onClick }: ILabel) => {
@@ -29,6 +29,11 @@ const Container = styled.button`
   &._active {
     background: ${colors.lightOrange};
   }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    padding: ${rem(3)} ${rem(8)};
+    height: ${rem(30)};
+  }
 `;
 
 const Image = styled.img`
@@ -40,6 +45,10 @@ const Image = styled.img`
 
 const Text = styled.span`
   white-space: nowrap;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    font-size: ${rem(12)};
+  }
 `;
 
 export default Label;

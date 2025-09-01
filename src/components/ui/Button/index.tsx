@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { rem } from "polished";
 import { IButton } from "./types";
-import { colors } from "../../../styles/theme";
+import { breakpoints, colors } from "../../../styles/theme";
 
 const Button = ({ children, className, state, data, onClick }: IButton) => {
   return (
@@ -27,6 +27,13 @@ const Container = styled.button`
   background: ${colors.gray};
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
   color: ${colors.black};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    font-size: ${rem(12)};
+    height: ${rem(30)};
+    border-radius: ${rem(8)};
+    font-weight: 400;
+  }
 
   &:hover {
     background: ${colors.lightOrange};

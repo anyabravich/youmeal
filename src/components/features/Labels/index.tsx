@@ -5,6 +5,7 @@ import { rem } from "polished";
 import { LABELS } from "./data";
 import { useLabel } from "../../common/LabelContext";
 import Label from "../../ui/Label";
+import { breakpoints } from "../../../styles/theme";
 
 const Labels = () => {
   const { selectedLabel, setSelectedLabel } = useLabel();
@@ -35,6 +36,10 @@ const Labels = () => {
 
 const LabelsContainer = styled.section`
   margin-bottom: ${rem(50)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    margin-bottom: ${rem(30)};
+  }
 `;
 
 const LabelsList = styled.ul`
@@ -46,6 +51,10 @@ const LabelsList = styled.ul`
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    gap: ${rem(12)};
   }
 `;
 

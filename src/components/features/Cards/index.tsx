@@ -64,12 +64,17 @@ const CardsContainer = styled.section`
   width: 100%;
 
   @media (max-width: ${breakpoints.tablet}px) {
-    margin-top: ${rem(100)};
+    margin-top: ${rem(80)};
   }
 `;
 
 const CardsTitle = styled.h2`
   margin-bottom: ${rem(24)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    font-size: ${rem(28)};
+    margin-bottom: ${rem(14)};
+  }
 `;
 
 const CardsItems = styled.ul`
@@ -83,6 +88,7 @@ const CardsItems = styled.ul`
 
   @media (max-width: ${breakpoints.tablet}px) {
     grid-template-columns: repeat(auto-fit, minmax(${rem(145)}, 1fr));
+    gap: ${rem(20)};
   }
 `;
 
