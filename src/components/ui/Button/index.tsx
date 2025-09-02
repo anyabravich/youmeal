@@ -4,12 +4,19 @@ import { rem } from "polished";
 import { IButton } from "./types";
 import { breakpoints, colors } from "../../../styles/theme";
 
-const Button = ({ children, className, state, data, onClick }: IButton) => {
+const Button = ({
+  children,
+  className,
+  state,
+  data,
+  onClick,
+  ...props
+}: IButton) => {
   return (
     <Container
       className={`button ${className || ""} ${state || ""}`}
       onClick={() => onClick?.(data)}
-      type="button"
+      {...props}
     >
       {children}
     </Container>

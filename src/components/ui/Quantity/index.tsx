@@ -3,24 +3,32 @@ import styled from "styled-components";
 import { rem } from "polished";
 import { colors } from "../../../styles/theme";
 import { IQuantity } from "./types";
+import Button from "../Button";
 
 const Quantity = ({ count, onIncrement, onDecrement }: IQuantity) => {
-  const handleButtonClick = (e: React.MouseEvent, callback: () => void) => {
-    e.stopPropagation();
+  const handleButtonClick = (callback: () => void) => {
     callback();
   };
 
   return (
     <Container>
-      <Button type="button" onClick={(e) => handleButtonClick(e, onDecrement)}>
+      <QuantityButton
+        type="button"
+        onClick={() => handleButtonClick(onDecrement)}
+        className="quantity-button"
+      >
         -
-      </Button>
+      </QuantityButton>
 
       <Value>{count}</Value>
 
-      <Button type="button" onClick={(e) => handleButtonClick(e, onIncrement)}>
+      <QuantityButton
+        type="button"
+        onClick={() => handleButtonClick(onIncrement)}
+        className="quantity-button"
+      >
         +
-      </Button>
+      </QuantityButton>
     </Container>
   );
 };
@@ -34,23 +42,15 @@ const Container = styled.div`
   border-radius: ${rem(12)};
 `;
 
-const Button = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+const QuantityButton = styled(Button)`
   width: ${rem(40)};
   height: ${rem(40)};
-  font-size: ${rem(16)};
-  border-radius: ${rem(12)};
-  transition: all 0.3s ease-in-out;
+  background: transparent;
+  border: none;
+
   &:hover {
     background: ${colors.lightOrange};
     color: ${colors.white};
-    transition: all 0.3s ease-in-out;
-  }
-  &:disabled {
-    pointer-events: none;
-    opacity: 0.2;
   }
 `;
 

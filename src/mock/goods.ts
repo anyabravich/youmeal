@@ -6,7 +6,7 @@ export const GOODS: IProduct[] = [
     image: "/images/cards/card-1.jpg",
     price: 689,
     title: "Мясная бомба",
-    weight: 520,
+    weight: 1000,
     category: ProductCategory.BURGERS,
   },
   {
