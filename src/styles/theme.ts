@@ -1,3 +1,5 @@
+import { BREAKPOINTS } from "../constants";
+
 export const colors = {
   black: "#000000",
   white: "#FFFFFF",
@@ -10,8 +12,8 @@ export const colors = {
 };
 
 export const breakpoints = {
-  mobile: 576,
-  tablet: 768,
-  laptop: 1024,
-  desktop: 1440,
+  mobile: BREAKPOINTS.MOBILE,
+  tablet: BREAKPOINTS.TABLET,
+  laptop: BREAKPOINTS.LAPTOP,
+  desktop: BREAKPOINTS.DESKTOP,
 };

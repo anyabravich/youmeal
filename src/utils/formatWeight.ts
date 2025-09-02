@@ -1,2 +1,8 @@
+import { WEIGHT_CONSTANTS } from "../constants";
+
 export const formatWeight = (weight: number): string =>
-  weight < 1000 ? `${weight}г.` : `${(weight / 1000).toFixed(2)}кг`;
+  weight < WEIGHT_CONSTANTS.GRAMS_TO_KILOGRAMS
+    ? `${weight}г.`
+    : `${(weight / WEIGHT_CONSTANTS.GRAMS_TO_KILOGRAMS).toFixed(
+        WEIGHT_CONSTANTS.DECIMAL_PLACES
+      )}кг`;

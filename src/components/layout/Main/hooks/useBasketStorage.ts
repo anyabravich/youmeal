@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { IProduct } from "../../../../types";
 import { IBasketItem } from "../../../../types/basket";
 import { useErrorHandler } from "../../../../hooks/useErrorHandler";
+import { STORAGE_KEYS } from "../../../../constants";
 
 export const useBasketStorage = () => {
   const [basketData, setBasketData] = useState<IBasketItem[]>([]);
@@ -69,7 +70,7 @@ export const useBasketStorage = () => {
   };
 
   useEffect(() => {
-    const savedBasket = safeLocalStorage.getItem("basket");
+    const savedBasket = safeLocalStorage.getItem(STORAGE_KEYS.BASKET);
     if (savedBasket) {
       const parsedBasket = safeJsonParse(savedBasket);
       if (parsedBasket) {
@@ -98,7 +99,7 @@ export const useBasketStorage = () => {
         }
 
         const success = safeLocalStorage.setItem(
-          "basket",
+          STORAGE_KEYS.BASKET,
           JSON.stringify(updatedBasket)
         );
 
@@ -119,7 +120,7 @@ export const useBasketStorage = () => {
       try {
         const updatedBasket = basketData.filter((item) => item.id !== id);
         const success = safeLocalStorage.setItem(
-          "basket",
+          STORAGE_KEYS.BASKET,
           JSON.stringify(updatedBasket)
         );
 
@@ -146,7 +147,7 @@ export const useBasketStorage = () => {
         });
 
         const success = safeLocalStorage.setItem(
-          "basket",
+          STORAGE_KEYS.BASKET,
           JSON.stringify(updatedBasket)
         );
 
