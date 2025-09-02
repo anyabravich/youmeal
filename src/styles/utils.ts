@@ -15,16 +15,3 @@ export const hideScrollbars = css`
     height: 0;
   }
 `;
-
-// Альтернативный способ - как функцию
-export const resetScrollbars = () => css`
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-    appearance: none;
-    width: 0;
-    height: 0;
-  }
-`;

@@ -45,10 +45,6 @@ const Image = styled.img`
 
 const Text = styled.span`
   white-space: nowrap;
-
-  @media (max-width: ${breakpoints.tablet}px) {
-    font-size: ${rem(12)};
-  }
 `;
 
 export default Label;

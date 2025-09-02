@@ -68,6 +68,7 @@ export const Container = styled.div`
   z-index: 100;
   background: rgba(0, 0, 0, 0.8);
   padding-block: ${rem(150)};
+  padding-inline: ${rem(16)};
 
   display: flex;
   align-items: flex-start;

@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
 import { rem } from "polished";
-import { colors } from "../../../styles/theme";
+import { breakpoints, colors } from "../../../styles/theme";
 import { IQuantity } from "./types";
 import Button from "../Button";
 
-const Quantity = ({ count, onIncrement, onDecrement }: IQuantity) => {
+const Quantity = ({
+  count,
+  onIncrement,
+  onDecrement,
+  className,
+}: IQuantity) => {
   const handleButtonClick = (callback: () => void) => {
     callback();
   };
 
   return (
-    <Container>
+    <Container className={className}>
       <QuantityButton
         type="button"
         onClick={() => handleButtonClick(onDecrement)}
@@ -20,7 +25,7 @@ const Quantity = ({ count, onIncrement, onDecrement }: IQuantity) => {
         -
       </QuantityButton>
 
-      <Value>{count}</Value>
+      <Value className="quantity-value">{count}</Value>
 
       <QuantityButton
         type="button"
@@ -40,6 +45,10 @@ const Container = styled.div`
   gap: ${rem(8)};
   background: ${colors.gray};
   border-radius: ${rem(12)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    border-radius: ${rem(8)};
+  }
 `;
 
 const QuantityButton = styled(Button)`
@@ -52,10 +61,19 @@ const QuantityButton = styled(Button)`
     background: ${colors.lightOrange};
     color: ${colors.white};
   }
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    width: ${rem(30)};
+    height: ${rem(30)};
+  }
 `;
 
 const Value = styled.output`
   font-size: ${rem(16)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    font-size: ${rem(12)};
+  }
 `;
 
 export default Quantity;

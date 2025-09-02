@@ -58,6 +58,10 @@ const FooterContainer = styled.footer`
   background: ${colors.white};
   padding-block: ${rem(46)} ${rem(40)};
   margin-top: auto;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    padding-block: ${rem(39)} ${rem(28)};
+  }
 `;
 
 const FooterTop = styled.div`
@@ -82,6 +86,7 @@ const FooterLogo = styled.img`
 
   @media (max-width: ${breakpoints.tablet}px) {
     width: ${rem(196)};
+    margin-bottom: ${rem(32)};
   }
 `;
 
@@ -102,7 +107,8 @@ const FooterContacts = styled.ul`
   }
 
   @media (max-width: ${breakpoints.tablet}px) {
-    flex-direction: column;
+    gap: ${rem(177)};
+    position: static;
   }
 `;
 
@@ -112,6 +118,11 @@ const FooterContactsTitle = styled.p`
   margin-bottom: ${rem(24)};
   font-size: ${rem(24)};
   line-height: 1;
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    margin-bottom: ${rem(8)};
+    font-size: ${rem(18)};
+  }
 `;
 
 const FooterContactsLink = styled.a`
@@ -121,6 +132,13 @@ const FooterContactsLink = styled.a`
   color: ${colors.black};
   display: flex;
   gap: ${rem(4)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    font-size: ${rem(12)};
+    line-height: 1.3;
+    gap: ${rem(6)};
+    align-items: center;
+  }
 `;
 
 const FooterSocials = styled.ul`

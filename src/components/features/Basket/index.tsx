@@ -122,7 +122,8 @@ const Container = styled.aside<IBasketStyled>`
     position: absolute;
     top: 0;
     margin-top: 0;
-    padding: ${rem(16)} ${rem(10)};
+    padding: ${rem(16)} ${rem(10)} ${rem(20)};
+    border-radius: ${rem(12)};
 
     ${({ $isOpen }) =>
       $isOpen &&
@@ -136,9 +137,8 @@ const ContainerMobile = styled.div<IBasketStyled>`
   @media (max-width: ${breakpoints.tablet}px) {
     display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
     background: ${colors.white};
-    top: ${rem(72)};
-    left: 0;
-    padding: ${rem(24)} ${rem(17)};
+    padding-top: ${rem(8)};
+    width: ${rem(280)};
   }
 `;
 
@@ -173,6 +173,11 @@ const BasketTotal = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-block: ${rem(16)} ${rem(24)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    margin-block: ${rem(10)} ${rem(20)};
+    font-size: ${rem(12)};
+  }
 `;
 
 const BasketButton = styled(Button)`

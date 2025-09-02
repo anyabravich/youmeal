@@ -45,6 +45,7 @@ const BasketCard: FC<BasketCardProps> = ({
             updateQuantity(id, count - 1);
           }
         }}
+        className="basket-quantity"
       />
     </Container>
   );
@@ -54,11 +55,28 @@ const Container = styled.article`
   display: grid;
   align-items: flex-start;
   gap: ${rem(6)};
-  grid-template-columns: ${rem(64)} 1fr ${rem(84)};
-  padding-block: ${rem(14)};
+  grid-template-columns: ${rem(64)} 1fr ${rem(74)};
+  padding-block: ${rem(10)};
   border-top: 1px solid ${colors.gray};
   border-bottom: 1px solid ${colors.gray};
   box-sizing: border-box;
+
+  .basket-quantity {
+    border-radius: ${rem(8)};
+    margin-left: auto;
+
+    .quantity-value {
+      font-size: ${rem(12)};
+    }
+
+    .quantity-button {
+      --size: ${rem(30)};
+      width: ${rem(26)};
+      height: var(--size);
+
+      font-size: ${rem(12)};
+    }
+  }
 `;
 
 const ImageContainer = styled.div`

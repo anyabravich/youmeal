@@ -70,6 +70,10 @@ const Main = ({
 const MainContainer = styled.main`
   position: relative;
   margin-bottom: ${rem(50)};
+
+  @media (max-width: ${breakpoints.tablet}px) {
+    margin-bottom: ${rem(30)};
+  }
 `;
 
 const MainInner = styled(Container)`

@@ -76,18 +76,30 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${rem(40)};
     font-weight: 600;
     line-height: 1.2;
+
+    @media (max-width: ${breakpoints.tablet}px) {
+      font-size: ${rem(28)};
+    }
   }
 
   .h3 {
     font-size: ${rem(24)};
     font-weight: 600;
     line-height: 1;
+
+    @media (max-width: ${breakpoints.tablet}px) {
+      font-size: ${rem(16)};
+    }
   }
 
   .text {
     font-size: ${rem(16)};
     font-weight: 400;
     line-height: normal;
+
+    @media (max-width: ${breakpoints.tablet}px) {
+      font-size: ${rem(12)};
+    }
   }
 
   .text-small {
@@ -100,6 +112,10 @@ export const GlobalStyle = createGlobalStyle`
     font-size: ${rem(24)};
     font-weight: 600;
     line-height: 1;
+
+    @media (max-width: ${breakpoints.tablet}px) {
+      font-size: ${rem(16)};
+    }
   }
 
   button {
