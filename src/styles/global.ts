@@ -70,6 +70,10 @@ export const GlobalStyle = createGlobalStyle`
     @media (max-width: ${breakpoints.tablet}px) {
       font-size: ${rem(36)};
     }
+
+    @media (max-width: ${breakpoints.mobile}px) {
+      font-size: ${rem(30)};
+    }
   }
 
   .h2 {

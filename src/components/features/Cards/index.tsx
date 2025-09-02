@@ -90,6 +90,11 @@ const CardsItems = styled.ul`
     grid-template-columns: repeat(auto-fit, minmax(${rem(145)}, 1fr));
     gap: ${rem(20)};
   }
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: ${rem(10)};
+  }
 `;
 
 export default Cards;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { rem } from "polished";
-import { colors } from "../../../../styles/theme";
+import { breakpoints, colors } from "../../../../styles/theme";
 import { IPopupProductProps } from "../types";
 import { usePopupProduct } from "../hooks/usePopupProduct";
 import Quantity from "../../../ui/Quantity";
@@ -86,10 +86,19 @@ const PopupProduct = ({
 const Container = styled.div`
   padding: ${rem(24)};
   padding-bottom: ${rem(36)};
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    padding: ${rem(32)} ${rem(20)};
+  }
 `;
 
 const Title = styled.p`
   margin-bottom: ${rem(24)};
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    font-size: ${rem(28)};
+    margin-bottom: ${rem(12)};
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -113,6 +122,11 @@ const Content = styled.div`
   gap: ${rem(16)};
 
   margin-bottom: ${rem(40)};
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    flex-direction: column;
+    gap: ${rem(10)};
+  }
 `;
 
 const Text = styled.p`
@@ -139,10 +153,20 @@ const Footer = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    flex-direction: column;
+    gap: ${rem(10)};
+  }
 `;
 
 const ButtonAction = styled(Button)`
   min-width: ${rem(276)};
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    width: ${rem(200)};
+    min-width: initial;
+  }
 `;
 
 const Actions = styled.div`

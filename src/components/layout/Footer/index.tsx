@@ -110,6 +110,10 @@ const FooterContacts = styled.ul`
     gap: ${rem(177)};
     position: static;
   }
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    flex-direction: column;
+  }
 `;
 
 const FooterContactsItem = styled.li``;

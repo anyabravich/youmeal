@@ -4,6 +4,7 @@ import Input from "../../../ui/Input";
 import Radio from "../../../ui/Radio";
 import { useState } from "react";
 import Button from "../../../ui/Button";
+import { breakpoints } from "../../../../styles/theme";
 
 const PopupDelivery = () => {
   const [deliveryType, setDeliveryType] = useState("pickup");
@@ -53,10 +54,19 @@ const PopupDelivery = () => {
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    display: block;
+    height: 100%;
+  }
 `;
 
 const ImageWrapper = styled.div`
   height: 100%;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    display: none;
+  }
 `;
 
 const Image = styled.img`
@@ -72,12 +82,23 @@ const Title = styled.h3`
 
 const Content = styled.div`
   padding: ${rem(54)} ${rem(24)} ${rem(24)};
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    padding: ${rem(32)} ${rem(10)};
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const FormSection = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${rem(8)};
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    height: 100%;
+  }
 `;
 
 const Inputs = styled.div`
@@ -102,6 +123,10 @@ const FloorIntercomGrid = styled.div`
 
 const ButtonAction = styled(Button)`
   width: 100%;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    margin-top: auto;
+  }
 `;
 
 export default PopupDelivery;

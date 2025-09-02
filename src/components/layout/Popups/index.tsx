@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../styles/theme";
+import { breakpoints, colors } from "../../../styles/theme";
 import { rem } from "polished";
 import { useBodyScrollLock } from "../../../hooks/useBodyScrollLock";
 import { useEscapeKey } from "../../../hooks/useEscapeKey";
@@ -50,9 +50,9 @@ const Popups = ({
   return (
     <Container ref={popupContainerRef} onClick={onClose}>
       <Content onClick={(e) => e.stopPropagation()}>
-        <Button type="button" onClick={onClose}>
+        <Close type="button" onClick={onClose}>
           <Icons.Close />
-        </Button>
+        </Close>
         {renderPopupContent()}
       </Content>
     </Container>
@@ -73,6 +73,10 @@ export const Container = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    padding: 0;
+  }
 `;
 
 export const Content = styled.div`
@@ -85,9 +89,15 @@ export const Content = styled.div`
   border-radius: ${rem(24)};
   overflow-y: auto;
   ${hideScrollbars}
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    border-radius: 0;
+    height: 100vh;
+    max-height: initial;
+  }
 `;
 
-export const Button = styled.button`
+export const Close = styled.button`
   --icon-size: ${rem(24)};
   --position: ${rem(24)};
 
@@ -101,6 +111,11 @@ export const Button = styled.button`
   svg {
     width: var(--icon-size);
     height: var(--icon-size);
+  }
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    --icon-size: ${rem(20)};
+    --position: ${rem(10)};
   }
 `;
 

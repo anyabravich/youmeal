@@ -22,6 +22,10 @@ const ContainerWrapper = styled.div`
   @media (max-width: ${breakpoints.tablet}px) {
     --container-padding: ${rem(64)};
   }
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    --container-padding: ${rem(10)};
+  }
 `;
 
 export default Container;

@@ -41,6 +41,10 @@ const Wrapper = styled.section`
     min-height: ${rem(349)};
     margin-bottom: ${rem(30)};
   }
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    min-height: ${rem(459)};
+  }
 `;
 
 const Inner = styled.div`

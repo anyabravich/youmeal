@@ -131,6 +131,10 @@ const Container = styled.aside<IBasketStyled>`
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.16);
     `}
   }
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    width: calc(100% - ${rem(20)});
+  }
 `;
 
 const ContainerMobile = styled.div<IBasketStyled>`
@@ -139,6 +143,10 @@ const ContainerMobile = styled.div<IBasketStyled>`
     background: ${colors.white};
     padding-top: ${rem(8)};
     width: ${rem(280)};
+  }
+
+  @media (max-width: ${breakpoints.mobile}px) {
+    width: 100%;
   }
 `;
 
