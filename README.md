@@ -37,8 +37,8 @@ YouMeal — это полнофункциональное веб-приложе�
 1. **Клонируйте репозиторий**
 
    ```bash
-   git clone <repository-url>
-   cd youmeal/site
+   git clone git@github.com:anyabravich/youmeal.git
+   cd youmeal
    ```
 
 2. **Установите зависимости**
